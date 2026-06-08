@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --cream: #FAF7F2;
@@ -26,232 +26,420 @@
       font-family: 'Inter', sans-serif;
       background: var(--cream);
       color: var(--mocha);
+      overflow-x: hidden;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(250,247,242,.92);
-      backdrop-filter: blur(16px);
+      background: rgba(250,247,242,.95);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--rose-mid);
-      padding: 0 32px;
-      height: 60px;
+      height: 64px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      padding: 0 32px;
     }
 
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      color: var(--mocha);
-      text-decoration: none;
+    .nav-logo img {
+      height: 32px;
+      object-fit: contain;
     }
 
-    .nav-logo span { color: var(--terracotta); }
-
-    /* HERO */
+    /* ── HERO ── */
     .hero {
-      padding: 80px 24px 60px;
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
     }
 
-    .tag {
-      display: inline-block;
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .14em;
+    .hero-left {
+      background: var(--mocha);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: .85;
+    }
+
+    .hero-left-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--mocha) 100%),
+                  linear-gradient(to top, rgba(44,24,16,.7) 0%, transparent 50%);
+    }
+
+    .hero-left-quote {
+      position: absolute;
+      bottom: 40px;
+      left: 32px;
+      right: 32px;
+      color: var(--cream);
+    }
+
+    .hero-left-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .hero-left-quote span {
+      font-size: .75rem;
+      color: var(--rose);
+      letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--terracotta);
-      background: var(--rose-light);
+    }
+
+    .hero-right {
+      background: var(--mocha);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 56px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
       border-radius: 20px;
       padding: 6px 16px;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
+      width: fit-content;
     }
 
-    .hero h1 {
+    .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 6vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.15;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.1;
       margin-bottom: 20px;
-      color: var(--mocha);
     }
 
-    .hero h1 em {
+    .hero-title em {
       font-style: italic;
       color: var(--terracotta);
     }
 
-    .hero p {
-      font-size: 1rem;
-      color: #7a5a4a;
-      line-height: 1.75;
-      max-width: 520px;
-      margin: 0 auto 40px;
+    .hero-desc {
+      font-size: .95rem;
+      color: var(--rose);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 400px;
     }
 
-    /* INCLUS */
+    .hero-arrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: gap .2s;
+    }
+
+    .hero-arrow:hover { gap: 18px; }
+
+    .hero-arrow svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* ── CONFIANCE ── */
+    .confiance {
+      background: var(--cream);
+      padding: 80px 24px;
+    }
+
+    .confiance-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .confiance-photo {
+      position: relative;
+    }
+
+    .confiance-photo img {
+      width: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+      display: block;
+    }
+
+    .confiance-photo-tag {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 14px;
+      letter-spacing: .05em;
+    }
+
+    .confiance-content {}
+
+    .section-tag {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+    }
+
+    .confiance-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .confiance-title em { font-style: italic; color: var(--terracotta); }
+
+    .confiance-text {
+      font-size: .9rem;
+      color: #7a5a4a;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat {
+      background: var(--rose-light);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--terracotta);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: .75rem;
+      color: #8a6a5a;
+    }
+
+    /* ── INCLUS ── */
     .inclus {
-      background: #fff;
-      padding: 56px 24px;
+      background: var(--mocha);
+      padding: 80px 24px;
     }
 
     .inclus-inner {
-      max-width: 700px;
+      max-width: 860px;
       margin: 0 auto;
     }
 
-    .section-label {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--terracotta);
+    .inclus-header {
       text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .inclus-header .section-tag { color: var(--gold); }
+
+    .inclus-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--cream);
       margin-bottom: 12px;
     }
 
-    .inclus h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 36px;
-    }
+    .inclus-title em { font-style: italic; color: var(--terracotta); }
+
+    .inclus-sub { font-size: .9rem; color: var(--rose); }
 
     .inclus-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
     .inclus-item {
-      background: var(--rose-light);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(212,170,170,.15);
       border-radius: 16px;
       padding: 24px 20px;
       display: flex;
-      gap: 14px;
+      gap: 16px;
       align-items: flex-start;
+      transition: background .2s;
     }
 
-    .inclus-emoji { font-size: 1.4rem; flex-shrink: 0; }
+    .inclus-item:hover { background: rgba(255,255,255,.1); }
+
+    .inclus-emoji { font-size: 1.6rem; flex-shrink: 0; }
 
     .inclus-text strong {
       display: block;
-      font-size: .88rem;
+      font-size: .9rem;
       font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--mocha);
+      color: var(--cream);
+      margin-bottom: 5px;
     }
 
     .inclus-text span {
       font-size: .78rem;
-      color: #8a6a5a;
-      line-height: 1.5;
+      color: var(--rose);
+      line-height: 1.6;
     }
 
-    /* PAIEMENT */
+    /* ── PAIEMENT ── */
     .paiement {
-      padding: 80px 24px;
+      padding: 80px 24px 100px;
       background: var(--cream);
     }
 
     .paiement-inner {
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto;
-      text-align: center;
     }
 
-    .paiement h2 {
+    .paiement-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .paiement-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 5vw, 2.6rem);
-      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
       margin-bottom: 12px;
     }
 
-    .paiement h2 em { font-style: italic; color: var(--terracotta); }
+    .paiement-title em { font-style: italic; color: var(--terracotta); }
 
-    .paiement-sub {
-      font-size: .95rem;
-      color: #8a6a5a;
-      margin-bottom: 52px;
-    }
+    .paiement-sub { font-size: .9rem; color: #8a6a5a; }
 
     .cards {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 24px;
-      justify-content: center;
-      flex-wrap: wrap;
     }
 
     .card {
       background: #fff;
       border-radius: 24px;
       padding: 40px 36px;
-      flex: 1;
-      min-width: 280px;
-      max-width: 360px;
-      box-shadow: 0 8px 48px rgba(44,24,16,.09);
       display: flex;
       flex-direction: column;
       position: relative;
-      text-align: left;
+      box-shadow: 0 4px 32px rgba(44,24,16,.07);
+      border: 2px solid transparent;
+      transition: box-shadow .2s, transform .2s;
     }
 
-    .card-popular { border: 2px solid var(--terracotta); }
+    .card:hover {
+      box-shadow: 0 12px 48px rgba(44,24,16,.12);
+      transform: translateY(-4px);
+    }
+
+    .card-popular {
+      border-color: var(--terracotta);
+    }
 
     .badge {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
       background: var(--terracotta);
       color: #fff;
       font-size: .65rem;
-      font-weight: 600;
-      letter-spacing: .08em;
+      font-weight: 700;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      padding: 5px 12px;
+      padding: 6px 20px;
       border-radius: 20px;
+      white-space: nowrap;
     }
 
     .card-type {
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .12em;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--terracotta);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .price-old {
-      font-size: .95rem;
-      color: #b8a0a0;
+      font-size: 1rem;
+      color: #c0a0a0;
       text-decoration: line-through;
       margin-bottom: 4px;
     }
 
     .price-new {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 800;
+      font-size: 3.2rem;
+      font-weight: 900;
       color: var(--mocha);
       line-height: 1;
       margin-bottom: 6px;
     }
 
-    .price-new sup { font-size: 1.4rem; vertical-align: super; }
+    .price-new sup { font-size: 1.4rem; vertical-align: super; font-weight: 700; }
 
     .price-note {
       font-size: .78rem;
       color: #9a7a6a;
       margin-bottom: 28px;
+    }
+
+    .savings {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
     }
 
     .divider { height: 1px; background: var(--rose-light); margin-bottom: 24px; }
@@ -284,154 +472,263 @@
     .btn-pay {
       display: block;
       text-align: center;
-      padding: 16px 24px;
+      padding: 18px 24px;
       border-radius: 14px;
       font-family: 'Inter', sans-serif;
-      font-size: .9rem;
-      font-weight: 600;
+      font-size: .92rem;
+      font-weight: 700;
       text-decoration: none;
+      letter-spacing: .02em;
       transition: transform .2s, box-shadow .2s;
     }
 
-    .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,120,120,.3); }
+    .btn-pay:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(192,120,120,.35);
+    }
+
     .btn-primary-pay { background: var(--terracotta); color: #fff; }
-    .btn-secondary-pay { background: var(--rose-light); color: var(--terracotta); }
+    .btn-secondary-pay { background: var(--mocha); color: var(--cream); }
 
     .guarantee {
       margin-top: 40px;
-      font-size: .8rem;
+      text-align: center;
+      font-size: .78rem;
       color: #9a7a6a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
       background: var(--mocha);
-      color: var(--rose);
       padding: 40px 24px;
       text-align: center;
     }
 
-    .foot-logo {
+    .foot-logo img { height: 28px; opacity: .8; margin-bottom: 10px; }
+
+    .foot-logo-text {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: .1em;
       color: var(--cream);
-      margin-bottom: 8px;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
     }
 
-    .foot-logo span { color: var(--terracotta); }
+    .foot-logo-text span { color: var(--terracotta); }
 
-    .foot-sub {
-      font-size: .8rem;
-      color: var(--rose);
-      opacity: .7;
-    }
+    .foot-sub { font-size: .78rem; color: var(--rose); opacity: .6; }
 
-    @media (max-width: 600px) {
-      .cards { flex-direction: column; align-items: center; }
-      .card { max-width: 100%; }
-      nav { padding: 0 16px; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { height: 55vw; min-height: 280px; }
+      .hero-right { padding: 48px 24px; }
+      .confiance-inner { grid-template-columns: 1fr; gap: 32px; }
+      .confiance-photo-tag { right: 0; bottom: -12px; }
+      .inclus-grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
-    <a href="https://manonbian.fr" class="nav-logo"><span>PRO</span>PULSE <span style="color:var(--mocha);font-size:.75rem;font-weight:400;">par Manon Bian</span></a>
+    <a href="https://manonbian.fr" class="nav-logo">
+      <img src="./logo-propulse.png" alt="PROPULSE par Manon Bian">
+    </a>
   </nav>
 
-  <div class="hero">
-    <span class="tag">Offre de lancement</span>
-    <h1>Tu es prête à <em>tout changer</em>.</h1>
-    <p>On vient de se parler. Tu sais maintenant ce que PROPULSE peut faire pour toi. Il ne reste plus qu'une étape.</p>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <img src="./DSC_0879.jpg" alt="Manon Bian">
+      <div class="hero-left-overlay"></div>
+      <div class="hero-left-quote">
+        <p>« Ce n'est pas un cours.<br>C'est un tournant. »</p>
+        <span>Manon Bian — Fondatrice PROPULSE</span>
+      </div>
+    </div>
 
+    <div class="hero-right">
+      <span class="hero-tag">✦ Offre de lancement</span>
+      <h1 class="hero-title">
+        On travaille<br>
+        <em>ensemble</em><br>
+        dès maintenant.
+      </h1>
+      <p class="hero-desc">
+        Tu as pris l'appel. Tu as vu le potentiel. Il ne reste plus qu'une étape pour rejoindre PROPULSE et transformer ton téléphone en vrai business.
+      </p>
+      <div class="hero-arrow" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'})">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 16"/><polyline points="8 12 12 16 16 12"/></svg>
+        Voir les formules
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIANCE -->
+  <section class="confiance">
+    <div class="confiance-inner">
+      <div class="confiance-photo">
+        <img src="./DSC_0721.jpg" alt="Manon Bian – PROPULSE">
+        <div class="confiance-photo-tag">Coaching personnalisé 1:1</div>
+      </div>
+      <div class="confiance-content">
+        <span class="section-tag">Pourquoi PROPULSE</span>
+        <h2 class="confiance-title">Tu n'es pas seule.<br>Je suis là <em>avec toi</em>.</h2>
+        <p class="confiance-text">
+          PROPULSE c'est plus qu'une formation. C'est un accompagnement où tu avances avec quelqu'un qui l'a vécu, qui l'a réussi, et qui te transmet exactement ce qui marche — sans le superflu.
+          <br><br>
+          Pendant tout l'accompagnement, je suis disponible pour toi. On ajuste, on avance, on célèbre chaque étape ensemble.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num">+50</div>
+            <div class="stat-label">Clientes accompagnées</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Sources de revenus enseignées</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8</div>
+            <div class="stat-label">Semaines intensives</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Suivi personnalisé</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUS -->
   <section class="inclus">
     <div class="inclus-inner">
-      <p class="section-label">Ce qui est inclus</p>
-      <h2>Tout ce dont tu as besoin pour réussir</h2>
+      <div class="inclus-header">
+        <span class="section-tag">Ce que tu reçois</span>
+        <h2 class="inclus-title">Tout ce qu'il faut pour <em>réussir</em>.</h2>
+        <p class="inclus-sub">Zéro superflu. Que du concret.</p>
+      </div>
       <div class="inclus-grid">
         <div class="inclus-item">
           <span class="inclus-emoji">🎯</span>
           <div class="inclus-text">
-            <strong>Méthode complète</strong>
-            <span>UGC, social media management, affiliation, marketing digital</span>
+            <strong>La méthode complète</strong>
+            <span>UGC, social media management, affiliation, marketing digital — tout ce qui rapporte vraiment.</span>
           </div>
         </div>
         <div class="inclus-item">
           <span class="inclus-emoji">💬</span>
           <div class="inclus-text">
-            <strong>Suivi personnalisé</strong>
-            <span>Accompagnement individuel pendant toute la durée</span>
+            <strong>Suivi 1:1 avec Manon</strong>
+            <span>Disponible, réactive et là pour toi à chaque étape de ton parcours.</span>
           </div>
         </div>
         <div class="inclus-item">
           <span class="inclus-emoji">⚡</span>
           <div class="inclus-text">
-            <strong>Outils exclusifs</strong>
-            <span>Templates, scripts, ressources prêts à l'emploi</span>
+            <strong>Outils & templates exclusifs</strong>
+            <span>Scripts, modèles de contenu, outils prêts à l'emploi pour aller vite.</span>
           </div>
         </div>
         <div class="inclus-item">
           <span class="inclus-emoji">🤝</span>
           <div class="inclus-text">
             <strong>Communauté privée</strong>
-            <span>Entraide et motivation avec d'autres créatrices</span>
+            <span>Rejoins un groupe de femmes ambitieuses qui avancent avec toi.</span>
+          </div>
+        </div>
+        <div class="inclus-item">
+          <span class="inclus-emoji">📈</span>
+          <div class="inclus-text">
+            <strong>Stratégie sur-mesure</strong>
+            <span>Un plan d'action adapté à ton profil, tes forces, tes objectifs.</span>
+          </div>
+        </div>
+        <div class="inclus-item">
+          <span class="inclus-emoji">🏆</span>
+          <div class="inclus-text">
+            <strong>Accès à vie aux mises à jour</strong>
+            <span>Les réseaux évoluent, la méthode aussi. Tu restes dans la boucle.</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="paiement">
+  <!-- PAIEMENT -->
+  <section class="paiement" id="paiement">
     <div class="paiement-inner">
-      <p class="section-label">Choisis ta formule</p>
-      <h2>Investis en <em>toi</em>.</h2>
-      <p class="paiement-sub">Les deux options donnent accès au même accompagnement complet.</p>
+      <div class="paiement-header">
+        <span class="section-tag">Rejoindre PROPULSE</span>
+        <h2 class="paiement-title">Choisis ta <em>formule</em>.</h2>
+        <p class="paiement-sub">Les deux options donnent accès au même accompagnement complet — choisis celle qui te convient le mieux.</p>
+      </div>
 
       <div class="cards">
+
         <div class="card">
           <p class="card-type">Paiement unique</p>
           <p class="price-old">1 200 €</p>
           <p class="price-new"><sup>€</sup>897</p>
-          <p class="price-note">Un seul règlement, c'est tout.</p>
+          <p class="price-note">Règlement en une fois.</p>
+          <span class="savings">Tu économises 303€</span>
           <div class="divider"></div>
           <ul class="features">
             <li>Accès complet à la méthode PROPULSE</li>
-            <li>Suivi personnalisé pendant l'accompagnement</li>
-            <li>Outils et ressources exclusifs</li>
+            <li>Suivi personnalisé 1:1 avec Manon</li>
+            <li>Outils, templates & scripts exclusifs</li>
             <li>Communauté privée</li>
-            <li>Prix offre de lancement — limité</li>
+            <li>Accès à vie + mises à jour</li>
+            <li>Prix offre de lancement — places limitées</li>
           </ul>
-          <a href="https://buy.stripe.com/6oU4gBcpmfVYdbsch37ok03" class="btn-pay btn-secondary-pay" target="_blank">Rejoindre pour 897€ →</a>
+          <a href="https://buy.stripe.com/6oU4gBcpmfVYdbsch37ok03" class="btn-pay btn-secondary-pay" target="_blank">
+            Rejoindre pour 897€ →
+          </a>
         </div>
 
         <div class="card card-popular">
-          <div class="badge">Populaire</div>
+          <div class="badge">✦ Le plus choisi</div>
           <p class="card-type">Paiement en 2 fois</p>
           <p class="price-old">2 × 650 €</p>
           <p class="price-new"><sup>€</sup>497</p>
-          <p class="price-note">× 2 mensualités — soit 994€ au total</p>
+          <p class="price-note">× 2 mensualités — 994€ au total</p>
+          <span class="savings">Tu économises 306€</span>
           <div class="divider"></div>
           <ul class="features">
             <li>Accès complet à la méthode PROPULSE</li>
-            <li>Suivi personnalisé pendant l'accompagnement</li>
-            <li>Outils et ressources exclusifs</li>
+            <li>Suivi personnalisé 1:1 avec Manon</li>
+            <li>Outils, templates & scripts exclusifs</li>
             <li>Communauté privée</li>
+            <li>Accès à vie + mises à jour</li>
             <li>Étalement sans frais cachés</li>
           </ul>
-          <a href="https://buy.stripe.com/00w5kF3SQ8tw0oGdl77ok02" class="btn-pay btn-primary-pay" target="_blank">Rejoindre pour 2× 497€ →</a>
+          <a href="https://buy.stripe.com/00w5kF3SQ8tw0oGdl77ok02" class="btn-pay btn-primary-pay" target="_blank">
+            Rejoindre pour 2× 497€ →
+          </a>
         </div>
+
       </div>
 
-      <p class="guarantee">🔒 Paiement 100% sécurisé via Stripe · Carte bancaire · Apple Pay</p>
+      <div class="guarantee">
+        🔒 Paiement 100% sécurisé via Stripe &nbsp;·&nbsp; Carte bancaire &nbsp;·&nbsp; Apple Pay
+      </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p class="foot-logo"><span>PRO</span>PULSE</p>
-    <p class="foot-sub">par Manon Bian · manonbian.fr</p>
+    <div class="foot-logo-text"><span>PRO</span>PULSE</div>
+    <p class="foot-sub">par Manon Bian &nbsp;·&nbsp; manonbian.fr</p>
   </footer>
 
 </body>
