@@ -21,339 +21,179 @@
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--mocha); overflow-x: hidden; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--cream);
-      color: var(--mocha);
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(250,247,242,.95);
-      backdrop-filter: blur(20px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,247,242,.96); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--rose-mid);
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 32px;
+      height: 60px; display: flex; align-items: center; justify-content: center;
     }
+    .nav-logo img { height: 28px; object-fit: contain; }
 
-    .nav-logo img {
-      height: 32px;
-      object-fit: contain;
-    }
-
-    /* ── HERO ── */
+    /* SECTION 1 — HERO COMPACT */
     .hero {
-      min-height: 100vh;
+      padding-top: 60px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 64px;
+      grid-template-columns: 420px 1fr;
+      min-height: 92vh;
+      background: var(--mocha);
     }
 
-    .hero-left {
-      background: var(--mocha);
+    .hero-photo {
       position: relative;
       overflow: hidden;
     }
 
-    .hero-left img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      opacity: .85;
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      opacity: .88;
+      display: block;
     }
 
-    .hero-left-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, transparent 60%, var(--mocha) 100%),
-                  linear-gradient(to top, rgba(44,24,16,.7) 0%, transparent 50%);
+    .hero-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 50%, var(--mocha) 100%);
     }
 
-    .hero-left-quote {
-      position: absolute;
-      bottom: 40px;
-      left: 32px;
-      right: 32px;
-      color: var(--cream);
+    .hero-quote {
+      position: absolute; bottom: 32px; left: 24px; right: 24px;
     }
 
-    .hero-left-quote p {
+    .hero-quote blockquote {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.3rem;
-      line-height: 1.5;
-      margin-bottom: 12px;
+      font-size: 1.05rem;
+      color: var(--cream);
+      line-height: 1.55;
+      margin-bottom: 10px;
+      opacity: .9;
     }
 
-    .hero-left-quote span {
-      font-size: .75rem;
-      color: var(--rose);
-      letter-spacing: .1em;
+    .hero-quote cite {
+      font-size: .65rem;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: .12em;
       text-transform: uppercase;
+      color: var(--gold);
     }
 
-    .hero-right {
-      background: var(--mocha);
+    .hero-content {
+      padding: 52px 48px 48px 40px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 60px 56px;
+      gap: 0;
     }
 
     .hero-tag {
-      display: inline-block;
       font-size: .65rem;
       font-weight: 700;
       letter-spacing: .16em;
       text-transform: uppercase;
       color: var(--gold);
-      border: 1px solid var(--gold);
+      border: 1px solid rgba(201,169,110,.4);
       border-radius: 20px;
       padding: 6px 16px;
-      margin-bottom: 32px;
       width: fit-content;
+      margin-bottom: 24px;
     }
 
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-size: clamp(2rem, 3vw, 2.8rem);
       font-weight: 900;
       color: var(--cream);
       line-height: 1.1;
-      margin-bottom: 20px;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: var(--terracotta);
-    }
-
-    .hero-desc {
-      font-size: .95rem;
-      color: var(--rose);
-      line-height: 1.8;
-      margin-bottom: 40px;
-      max-width: 400px;
-    }
-
-    .hero-arrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--gold);
-      font-size: .8rem;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: gap .2s;
-    }
-
-    .hero-arrow:hover { gap: 18px; }
-
-    .hero-arrow svg {
-      width: 32px;
-      height: 32px;
-      stroke: var(--gold);
-      fill: none;
-      stroke-width: 2;
-    }
-
-    /* ── CONFIANCE ── */
-    .confiance {
-      background: var(--cream);
-      padding: 80px 24px;
-    }
-
-    .confiance-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .confiance-photo {
-      position: relative;
-    }
-
-    .confiance-photo img {
-      width: 100%;
-      border-radius: 24px;
-      object-fit: cover;
-      aspect-ratio: 3/4;
-      display: block;
-    }
-
-    .confiance-photo-tag {
-      position: absolute;
-      bottom: -16px;
-      right: -16px;
-      background: var(--terracotta);
-      color: #fff;
-      font-size: .75rem;
-      font-weight: 600;
-      padding: 12px 20px;
-      border-radius: 14px;
-      letter-spacing: .05em;
-    }
-
-    .confiance-content {}
-
-    .section-tag {
-      display: inline-block;
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 16px;
-    }
-
-    .confiance-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-
-    .confiance-title em { font-style: italic; color: var(--terracotta); }
-
-    .confiance-text {
-      font-size: .9rem;
-      color: #7a5a4a;
-      line-height: 1.8;
       margin-bottom: 32px;
     }
 
-    .stats {
+    .hero-title em { font-style: italic; color: var(--terracotta); }
+
+    /* INCLUS dans hero */
+    .inclus-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .stat {
-      background: var(--rose-light);
-      border-radius: 14px;
-      padding: 20px;
-    }
-
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--terracotta);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: .75rem;
-      color: #8a6a5a;
-    }
-
-    /* ── INCLUS ── */
-    .inclus {
-      background: var(--mocha);
-      padding: 80px 24px;
-    }
-
-    .inclus-inner {
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .inclus-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .inclus-header .section-tag { color: var(--gold); }
-
-    .inclus-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 800;
-      color: var(--cream);
-      margin-bottom: 12px;
-    }
-
-    .inclus-title em { font-style: italic; color: var(--terracotta); }
-
-    .inclus-sub { font-size: .9rem; color: var(--rose); }
-
-    .inclus-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 10px;
+      margin-bottom: 36px;
     }
 
     .inclus-item {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(212,170,170,.15);
-      border-radius: 16px;
-      padding: 24px 20px;
       display: flex;
-      gap: 16px;
       align-items: flex-start;
-      transition: background .2s;
+      gap: 10px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(212,170,170,.12);
+      border-radius: 12px;
+      padding: 14px 12px;
     }
 
-    .inclus-item:hover { background: rgba(255,255,255,.1); }
-
-    .inclus-emoji { font-size: 1.6rem; flex-shrink: 0; }
+    .inclus-emoji { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
 
     .inclus-text strong {
       display: block;
-      font-size: .9rem;
+      font-size: .78rem;
       font-weight: 600;
       color: var(--cream);
-      margin-bottom: 5px;
+      margin-bottom: 2px;
+      line-height: 1.3;
     }
 
     .inclus-text span {
-      font-size: .78rem;
+      font-size: .68rem;
       color: var(--rose);
-      line-height: 1.6;
+      line-height: 1.4;
+      opacity: .85;
     }
 
-    /* ── PAIEMENT ── */
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 700;
+      padding: 16px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      width: fit-content;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(192,120,120,.4); }
+
+    /* SECTION 2 — PAIEMENT */
     .paiement {
-      padding: 80px 24px 100px;
+      padding: 72px 24px 90px;
       background: var(--cream);
     }
 
-    .paiement-inner {
-      max-width: 860px;
-      margin: 0 auto;
-    }
+    .paiement-inner { max-width: 860px; margin: 0 auto; }
 
-    .paiement-header {
-      text-align: center;
-      margin-bottom: 56px;
+    .paiement-header { text-align: center; margin-bottom: 52px; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 12px;
     }
 
     .paiement-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
       font-weight: 900;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .paiement-title em { font-style: italic; color: var(--terracotta); }
 
-    .paiement-sub { font-size: .9rem; color: #8a6a5a; }
+    .paiement-sub { font-size: .88rem; color: #8a6a5a; }
 
     .cards {
       display: grid;
@@ -364,314 +204,191 @@
     .card {
       background: #fff;
       border-radius: 24px;
-      padding: 40px 36px;
-      display: flex;
-      flex-direction: column;
+      padding: 40px 34px;
+      display: flex; flex-direction: column;
       position: relative;
       box-shadow: 0 4px 32px rgba(44,24,16,.07);
       border: 2px solid transparent;
       transition: box-shadow .2s, transform .2s;
     }
 
-    .card:hover {
-      box-shadow: 0 12px 48px rgba(44,24,16,.12);
-      transform: translateY(-4px);
-    }
-
-    .card-popular {
-      border-color: var(--terracotta);
-    }
+    .card:hover { box-shadow: 0 12px 48px rgba(44,24,16,.12); transform: translateY(-4px); }
+    .card-popular { border-color: var(--terracotta); }
 
     .badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--terracotta);
-      color: #fff;
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: 6px 20px;
-      border-radius: 20px;
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--terracotta); color: #fff;
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: 6px 20px; border-radius: 20px;
       white-space: nowrap;
     }
 
     .card-type {
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 24px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--terracotta); margin-bottom: 20px;
     }
 
-    .price-old {
-      font-size: 1rem;
-      color: #c0a0a0;
-      text-decoration: line-through;
-      margin-bottom: 4px;
-    }
+    .price-old { font-size: .95rem; color: #c0a0a0; text-decoration: line-through; margin-bottom: 4px; }
 
     .price-new {
       font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
-      font-weight: 900;
-      color: var(--mocha);
-      line-height: 1;
-      margin-bottom: 6px;
+      font-size: 3rem; font-weight: 900; color: var(--mocha);
+      line-height: 1; margin-bottom: 6px;
     }
 
-    .price-new sup { font-size: 1.4rem; vertical-align: super; font-weight: 700; }
+    .price-new sup { font-size: 1.3rem; vertical-align: super; }
 
-    .price-note {
-      font-size: .78rem;
-      color: #9a7a6a;
-      margin-bottom: 28px;
-    }
+    .price-note { font-size: .78rem; color: #9a7a6a; margin-bottom: 10px; }
 
     .savings {
       display: inline-block;
-      background: #e8f5e9;
-      color: #2e7d32;
-      font-size: .7rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 24px;
+      background: #e8f5e9; color: #2e7d32;
+      font-size: .68rem; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
     }
 
-    .divider { height: 1px; background: var(--rose-light); margin-bottom: 24px; }
+    .divider { height: 1px; background: var(--rose-light); margin-bottom: 20px; }
 
     .features {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 32px;
-      flex: 1;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 28px; flex: 1;
     }
 
     .features li {
-      font-size: .85rem;
-      color: #5a3a2a;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.5;
+      font-size: .83rem; color: #5a3a2a;
+      display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
     }
 
-    .features li::before {
-      content: '✓';
-      color: var(--terracotta);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
+    .features li::before { content: '✓'; color: var(--terracotta); font-weight: 700; flex-shrink: 0; }
 
     .btn-pay {
-      display: block;
-      text-align: center;
-      padding: 18px 24px;
-      border-radius: 14px;
-      font-family: 'Inter', sans-serif;
-      font-size: .92rem;
-      font-weight: 700;
-      text-decoration: none;
-      letter-spacing: .02em;
+      display: block; text-align: center;
+      padding: 17px 24px; border-radius: 14px;
+      font-family: 'Inter', sans-serif; font-size: .9rem; font-weight: 700;
+      text-decoration: none; letter-spacing: .02em;
       transition: transform .2s, box-shadow .2s;
     }
 
-    .btn-pay:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(192,120,120,.35);
-    }
-
+    .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(192,120,120,.35); }
     .btn-primary-pay { background: var(--terracotta); color: #fff; }
     .btn-secondary-pay { background: var(--mocha); color: var(--cream); }
 
     .guarantee {
-      margin-top: 40px;
-      text-align: center;
-      font-size: .78rem;
-      color: #9a7a6a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      margin-top: 36px; text-align: center;
+      font-size: .78rem; color: #9a7a6a;
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       background: var(--mocha);
-      padding: 40px 24px;
-      text-align: center;
+      padding: 36px 24px; text-align: center;
     }
-
-    .foot-logo img { height: 28px; opacity: .8; margin-bottom: 10px; }
 
     .foot-logo-text {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--cream);
-      letter-spacing: .08em;
-      margin-bottom: 10px;
+      font-size: 1rem; font-weight: 700;
+      color: var(--cream); letter-spacing: .08em; margin-bottom: 8px;
     }
 
     .foot-logo-text span { color: var(--terracotta); }
+    .foot-sub { font-size: .75rem; color: var(--rose); opacity: .6; }
 
-    .foot-sub { font-size: .78rem; color: var(--rose); opacity: .6; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { height: 55vw; min-height: 280px; }
-      .hero-right { padding: 48px 24px; }
-      .confiance-inner { grid-template-columns: 1fr; gap: 32px; }
-      .confiance-photo-tag { right: 0; bottom: -12px; }
-      .inclus-grid { grid-template-columns: 1fr; }
+      .hero-photo { height: 60vw; max-height: 380px; }
+      .hero-content { padding: 40px 24px; }
+      .inclus-list { grid-template-columns: 1fr; }
       .cards { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="https://manonbian.fr" class="nav-logo">
       <img src="./logo-propulse.png" alt="PROPULSE par Manon Bian">
     </a>
   </nav>
 
-  <!-- HERO -->
+  <!-- SECTION 1 — HERO + INCLUS -->
   <section class="hero">
-    <div class="hero-left">
+    <div class="hero-photo">
       <img src="./DSC_0879.jpg" alt="Manon Bian">
-      <div class="hero-left-overlay"></div>
-      <div class="hero-left-quote">
-        <p>« Ce n'est pas un cours.<br>C'est un tournant. »</p>
-        <span>Manon Bian — Fondatrice PROPULSE</span>
+      <div class="hero-photo-overlay"></div>
+      <div class="hero-quote">
+        <blockquote>« Ce n'est pas un cours.<br>C'est un tournant. »</blockquote>
+        <cite>Manon Bian — Fondatrice PROPULSE</cite>
       </div>
     </div>
 
-    <div class="hero-right">
+    <div class="hero-content">
       <span class="hero-tag">✦ Offre de lancement</span>
       <h1 class="hero-title">
         On travaille<br>
         <em>ensemble</em><br>
         dès maintenant.
       </h1>
-      <p class="hero-desc">
-        Tu as pris l'appel. Tu as vu le potentiel. Il ne reste plus qu'une étape pour rejoindre PROPULSE et transformer ton téléphone en vrai business.
-      </p>
-      <div class="hero-arrow" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'})">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 16"/><polyline points="8 12 12 16 16 12"/></svg>
-        Voir les formules
-      </div>
-    </div>
-  </section>
 
-  <!-- CONFIANCE -->
-  <section class="confiance">
-    <div class="confiance-inner">
-      <div class="confiance-photo">
-        <img src="./DSC_0721.jpg" alt="Manon Bian – PROPULSE">
-        <div class="confiance-photo-tag">Coaching personnalisé 1:1</div>
-      </div>
-      <div class="confiance-content">
-        <span class="section-tag">Pourquoi PROPULSE</span>
-        <h2 class="confiance-title">Tu n'es pas seule.<br>Je suis là <em>avec toi</em>.</h2>
-        <p class="confiance-text">
-          PROPULSE c'est plus qu'une formation. C'est un accompagnement où tu avances avec quelqu'un qui l'a vécu, qui l'a réussi, et qui te transmet exactement ce qui marche — sans le superflu.
-          <br><br>
-          Pendant tout l'accompagnement, je suis disponible pour toi. On ajuste, on avance, on célèbre chaque étape ensemble.
-        </p>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-num">+50</div>
-            <div class="stat-label">Clientes accompagnées</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">3</div>
-            <div class="stat-label">Sources de revenus enseignées</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">8</div>
-            <div class="stat-label">Semaines intensives</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Suivi personnalisé</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INCLUS -->
-  <section class="inclus">
-    <div class="inclus-inner">
-      <div class="inclus-header">
-        <span class="section-tag">Ce que tu reçois</span>
-        <h2 class="inclus-title">Tout ce qu'il faut pour <em>réussir</em>.</h2>
-        <p class="inclus-sub">Zéro superflu. Que du concret.</p>
-      </div>
-      <div class="inclus-grid">
+      <div class="inclus-list">
         <div class="inclus-item">
           <span class="inclus-emoji">🎯</span>
           <div class="inclus-text">
             <strong>La méthode complète</strong>
-            <span>UGC, social media management, affiliation, marketing digital — tout ce qui rapporte vraiment.</span>
+            <span>UGC, social media, affiliation, marketing digital</span>
           </div>
         </div>
         <div class="inclus-item">
           <span class="inclus-emoji">💬</span>
           <div class="inclus-text">
             <strong>Suivi 1:1 avec Manon</strong>
-            <span>Disponible, réactive et là pour toi à chaque étape de ton parcours.</span>
+            <span>Disponible et là à chaque étape</span>
           </div>
         </div>
         <div class="inclus-item">
           <span class="inclus-emoji">⚡</span>
           <div class="inclus-text">
             <strong>Outils & templates exclusifs</strong>
-            <span>Scripts, modèles de contenu, outils prêts à l'emploi pour aller vite.</span>
+            <span>Scripts, modèles prêts à l'emploi</span>
           </div>
         </div>
         <div class="inclus-item">
           <span class="inclus-emoji">🤝</span>
           <div class="inclus-text">
             <strong>Communauté privée</strong>
-            <span>Rejoins un groupe de femmes ambitieuses qui avancent avec toi.</span>
+            <span>Entraide avec d'autres créatrices</span>
           </div>
         </div>
         <div class="inclus-item">
           <span class="inclus-emoji">📈</span>
           <div class="inclus-text">
             <strong>Stratégie sur-mesure</strong>
-            <span>Un plan d'action adapté à ton profil, tes forces, tes objectifs.</span>
+            <span>Adaptée à ton profil et tes objectifs</span>
           </div>
         </div>
         <div class="inclus-item">
           <span class="inclus-emoji">🏆</span>
           <div class="inclus-text">
-            <strong>Accès à vie aux mises à jour</strong>
-            <span>Les réseaux évoluent, la méthode aussi. Tu restes dans la boucle.</span>
+            <strong>Accès à vie</strong>
+            <span>Mises à jour incluses pour toujours</span>
           </div>
         </div>
       </div>
+
+      <a href="#paiement" class="hero-cta" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'}); return false;">
+        Voir les formules →
+      </a>
     </div>
   </section>
 
-  <!-- PAIEMENT -->
+  <!-- SECTION 2 — PAIEMENT DIRECT -->
   <section class="paiement" id="paiement">
     <div class="paiement-inner">
       <div class="paiement-header">
         <span class="section-tag">Rejoindre PROPULSE</span>
         <h2 class="paiement-title">Choisis ta <em>formule</em>.</h2>
-        <p class="paiement-sub">Les deux options donnent accès au même accompagnement complet — choisis celle qui te convient le mieux.</p>
+        <p class="paiement-sub">Les deux options donnent accès au même accompagnement complet.</p>
       </div>
 
       <div class="cards">
@@ -719,13 +436,10 @@
 
       </div>
 
-      <div class="guarantee">
-        🔒 Paiement 100% sécurisé via Stripe &nbsp;·&nbsp; Carte bancaire &nbsp;·&nbsp; Apple Pay
-      </div>
+      <p class="guarantee">🔒 Paiement 100% sécurisé via Stripe &nbsp;·&nbsp; Carte bancaire &nbsp;·&nbsp; Apple Pay</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="foot-logo-text"><span>PRO</span>PULSE</div>
     <p class="foot-sub">par Manon Bian &nbsp;·&nbsp; manonbian.fr</p>
