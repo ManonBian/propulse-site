@@ -317,7 +317,7 @@
     .foot-logo-text span { color: var(--terracotta); }
     .foot-sub { font-size: .7rem; color: var(--rose); opacity: .5; }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE TABLETTE */
     @media (max-width: 860px) {
       .s1-body { grid-template-columns: 1fr; gap: 32px; padding: 0 24px; }
       .s1-photo-wrap img { height: 400px; }
@@ -325,9 +325,85 @@
       .cards { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 480px) {
-      .s1-title { font-size: 2.4rem; }
-      .s1-photo-wrap img { height: 340px; }
+    /* RESPONSIVE MOBILE */
+    @media (max-width: 580px) {
+
+      /* Header titre compact */
+      .s1-header {
+        padding: 32px 20px 24px;
+      }
+
+      .s1-title {
+        font-size: 2rem;
+      }
+
+      /* Photo en fond plein écran */
+      .s1-body {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 0;
+      }
+
+      .s1-photo-wrap {
+        border-radius: 0;
+        height: 75vw;
+        min-height: 280px;
+        max-height: 380px;
+      }
+
+      .s1-photo-wrap img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      /* Overlay plus marqué sur mobile */
+      .s1-photo-overlay {
+        background: linear-gradient(to top, rgba(44,24,16,.88) 35%, rgba(44,24,16,.25) 70%, transparent 100%);
+      }
+
+      /* Quote visible sur mobile */
+      .s1-photo-quote blockquote {
+        font-size: .95rem;
+      }
+
+      /* Inclus à droite → dessous sur mobile */
+      .s1-right {
+        padding: 32px 20px;
+        background: var(--cream);
+      }
+
+      .s1-right-title {
+        font-size: 1rem;
+        margin-bottom: 16px;
+      }
+
+      .inclus-row {
+        padding: 12px 14px;
+        border-radius: 12px;
+      }
+
+      .inclus-text strong { font-size: .8rem; }
+      .inclus-text span { font-size: .72rem; }
+
+      .inclus-list { gap: 8px; margin-bottom: 28px; }
+
+      .s1-cta {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 24px;
+      }
+
+      /* Section paiement mobile */
+      .s2 { padding: 48px 16px 64px; }
+      .s2-header { margin-bottom: 36px; }
+      .cards { grid-template-columns: 1fr; gap: 28px; }
+
+      .card { padding: 32px 22px 26px; }
+
+      .price-new { font-size: 2.4rem; }
+
+      .btn-pay { padding: 16px 20px; font-size: .9rem; }
     }
   </style>
 </head>
