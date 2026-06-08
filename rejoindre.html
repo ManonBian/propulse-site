@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejoindre PROPULSE – Manon Bian</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --mocha: #2C1810;
+      --rose: #D4AAAA;
+      --terracotta: #C07878;
+      --gold: #C9A96E;
+      --rose-light: #F4ECEC;
+      --rose-mid: #E8D5D5;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--mocha);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,247,242,.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rose-mid);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--mocha);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--terracotta); }
+
+    /* HERO */
+    .hero {
+      padding: 80px 24px 60px;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      background: var(--rose-light);
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--mocha);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #7a5a4a;
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    /* INCLUS */
+    .inclus {
+      background: #fff;
+      padding: 56px 24px;
+    }
+
+    .inclus-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .inclus h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .inclus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .inclus-item {
+      background: var(--rose-light);
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .inclus-emoji { font-size: 1.4rem; flex-shrink: 0; }
+
+    .inclus-text strong {
+      display: block;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--mocha);
+    }
+
+    .inclus-text span {
+      font-size: .78rem;
+      color: #8a6a5a;
+      line-height: 1.5;
+    }
+
+    /* PAIEMENT */
+    .paiement {
+      padding: 80px 24px;
+      background: var(--cream);
+    }
+
+    .paiement-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .paiement h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .paiement h2 em { font-style: italic; color: var(--terracotta); }
+
+    .paiement-sub {
+      font-size: .95rem;
+      color: #8a6a5a;
+      margin-bottom: 52px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 40px 36px;
+      flex: 1;
+      min-width: 280px;
+      max-width: 360px;
+      box-shadow: 0 8px 48px rgba(44,24,16,.09);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      text-align: left;
+    }
+
+    .card-popular { border: 2px solid var(--terracotta); }
+
+    .badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    .card-type {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 20px;
+    }
+
+    .price-old {
+      font-size: .95rem;
+      color: #b8a0a0;
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .price-new {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--mocha);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .price-new sup { font-size: 1.4rem; vertical-align: super; }
+
+    .price-note {
+      font-size: .78rem;
+      color: #9a7a6a;
+      margin-bottom: 28px;
+    }
+
+    .divider { height: 1px; background: var(--rose-light); margin-bottom: 24px; }
+
+    .features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex: 1;
+    }
+
+    .features li {
+      font-size: .85rem;
+      color: #5a3a2a;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .features li::before {
+      content: '✓';
+      color: var(--terracotta);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .btn-pay {
+      display: block;
+      text-align: center;
+      padding: 16px 24px;
+      border-radius: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,120,120,.3); }
+    .btn-primary-pay { background: var(--terracotta); color: #fff; }
+    .btn-secondary-pay { background: var(--rose-light); color: var(--terracotta); }
+
+    .guarantee {
+      margin-top: 40px;
+      font-size: .8rem;
+      color: #9a7a6a;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--mocha);
+      color: var(--rose);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .foot-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .foot-logo span { color: var(--terracotta); }
+
+    .foot-sub {
+      font-size: .8rem;
+      color: var(--rose);
+      opacity: .7;
+    }
+
+    @media (max-width: 600px) {
+      .cards { flex-direction: column; align-items: center; }
+      .card { max-width: 100%; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://manonbian.fr" class="nav-logo"><span>PRO</span>PULSE <span style="color:var(--mocha);font-size:.75rem;font-weight:400;">par Manon Bian</span></a>
+  </nav>
+
+  <div class="hero">
+    <span class="tag">Offre de lancement</span>
+    <h1>Tu es prête à <em>tout changer</em>.</h1>
+    <p>On vient de se parler. Tu sais maintenant ce que PROPULSE peut faire pour toi. Il ne reste plus qu'une étape.</p>
+  </div>
+
+  <section class="inclus">
+    <div class="inclus-inner">
+      <p class="section-label">Ce qui est inclus</p>
+      <h2>Tout ce dont tu as besoin pour réussir</h2>
+      <div class="inclus-grid">
+        <div class="inclus-item">
+          <span class="inclus-emoji">🎯</span>
+          <div class="inclus-text">
+            <strong>Méthode complète</strong>
+            <span>UGC, social media management, affiliation, marketing digital</span>
+          </div>
+        </div>
+        <div class="inclus-item">
+          <span class="inclus-emoji">💬</span>
+          <div class="inclus-text">
+            <strong>Suivi personnalisé</strong>
+            <span>Accompagnement individuel pendant toute la durée</span>
+          </div>
+        </div>
+        <div class="inclus-item">
+          <span class="inclus-emoji">⚡</span>
+          <div class="inclus-text">
+            <strong>Outils exclusifs</strong>
+            <span>Templates, scripts, ressources prêts à l'emploi</span>
+          </div>
+        </div>
+        <div class="inclus-item">
+          <span class="inclus-emoji">🤝</span>
+          <div class="inclus-text">
+            <strong>Communauté privée</strong>
+            <span>Entraide et motivation avec d'autres créatrices</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="paiement">
+    <div class="paiement-inner">
+      <p class="section-label">Choisis ta formule</p>
+      <h2>Investis en <em>toi</em>.</h2>
+      <p class="paiement-sub">Les deux options donnent accès au même accompagnement complet.</p>
+
+      <div class="cards">
+        <div class="card">
+          <p class="card-type">Paiement unique</p>
+          <p class="price-old">1 200 €</p>
+          <p class="price-new"><sup>€</sup>897</p>
+          <p class="price-note">Un seul règlement, c'est tout.</p>
+          <div class="divider"></div>
+          <ul class="features">
+            <li>Accès complet à la méthode PROPULSE</li>
+            <li>Suivi personnalisé pendant l'accompagnement</li>
+            <li>Outils et ressources exclusifs</li>
+            <li>Communauté privée</li>
+            <li>Prix offre de lancement — limité</li>
+          </ul>
+          <a href="https://buy.stripe.com/00w5kF3SQ8tw0oGdl77ok02" class="btn-pay btn-secondary-pay" target="_blank">Rejoindre pour 897€ →</a>
+        </div>
+
+        <div class="card card-popular">
+          <div class="badge">Populaire</div>
+          <p class="card-type">Paiement en 2 fois</p>
+          <p class="price-old">2 × 650 €</p>
+          <p class="price-new"><sup>€</sup>497</p>
+          <p class="price-note">× 2 mensualités — soit 994€ au total</p>
+          <div class="divider"></div>
+          <ul class="features">
+            <li>Accès complet à la méthode PROPULSE</li>
+            <li>Suivi personnalisé pendant l'accompagnement</li>
+            <li>Outils et ressources exclusifs</li>
+            <li>Communauté privée</li>
+            <li>Étalement sans frais cachés</li>
+          </ul>
+          <a href="https://buy.stripe.com/eVq4gB9daaBE3ASftf7ok01" class="btn-pay btn-primary-pay" target="_blank">Rejoindre pour 2× 497€ →</a>
+        </div>
+      </div>
+
+      <p class="guarantee">🔒 Paiement 100% sécurisé via Stripe · Carte bancaire · Apple Pay</p>
+    </div>
+  </section>
+
+  <footer>
+    <p class="foot-logo"><span>PRO</span>PULSE</p>
+    <p class="foot-sub">par Manon Bian · manonbian.fr</p>
+  </footer>
+
+</body>
+</html>
