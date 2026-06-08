@@ -35,25 +35,28 @@
     /* ── SECTION 1 ── */
     .s1 {
       padding-top: 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 94vh;
+      background: var(--cream);
+      padding-bottom: 72px;
     }
 
-    /* Colonne gauche — texte + inclus */
-    .s1-left {
-      background: var(--cream);
-      padding: 64px 52px 64px 60px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .s1-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 64px 40px 0;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 56px;
+      align-items: start;
     }
+
+    /* Gauche — titre + inclus */
+    .s1-left { display: flex; flex-direction: column; }
 
     .tag-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: .62rem;
+      font-size: .6rem;
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
@@ -62,57 +65,37 @@
       border-radius: 20px;
       padding: 7px 16px;
       width: fit-content;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .s1-title {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
-      font-size: clamp(2.2rem, 3.5vw, 3rem);
-      line-height: 1.08;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      line-height: 1.06;
       color: var(--mocha);
-      margin-bottom: 10px;
+      margin-bottom: 40px;
     }
 
-    .s1-title em {
+    .s1-title .line-light {
+      font-weight: 400;
       font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1em;
       color: var(--terracotta);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15em;
+      display: block;
     }
 
-    .s1-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.15rem;
-      color: #9a7a6a;
-      line-height: 1.6;
-      margin-bottom: 4px;
+    .s1-title .line-big {
+      font-size: 1em;
+      display: block;
     }
 
-    .s1-cite {
-      font-size: .62rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: 36px;
-    }
-
-    .s1-divider {
-      width: 40px;
-      height: 2px;
-      background: var(--terracotta);
-      border-radius: 2px;
-      margin-bottom: 32px;
-      opacity: .5;
-    }
-
-    /* Inclus — liste compacte */
+    /* Inclus list */
     .inclus-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 40px;
     }
 
@@ -120,16 +103,19 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 12px 16px;
+      padding: 13px 18px;
       border-radius: 12px;
       background: #fff;
       border: 1px solid var(--rose-mid);
-      transition: border-color .2s;
+      transition: border-color .2s, box-shadow .2s;
     }
 
-    .inclus-row:hover { border-color: var(--terracotta); }
+    .inclus-row:hover {
+      border-color: var(--terracotta);
+      box-shadow: 0 2px 12px rgba(192,120,120,.1);
+    }
 
-    .inclus-emoji { font-size: 1rem; flex-shrink: 0; }
+    .inclus-emoji { font-size: .95rem; flex-shrink: 0; }
 
     .inclus-row strong {
       font-size: .82rem;
@@ -138,9 +124,9 @@
     }
 
     .inclus-row span {
-      font-size: .72rem;
+      font-size: .75rem;
       color: #9a7a6a;
-      margin-left: 4px;
+      margin-left: 3px;
     }
 
     .s1-cta {
@@ -151,46 +137,69 @@
       color: #fff;
       font-size: .85rem;
       font-weight: 700;
-      padding: 15px 28px;
+      padding: 15px 32px;
       border-radius: 50px;
       text-decoration: none;
       width: fit-content;
-      letter-spacing: .02em;
       transition: transform .2s, box-shadow .2s;
     }
 
     .s1-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(192,120,120,.38); }
 
-    /* Colonne droite — photo */
-    .s1-right {
+    /* Droite — photo avec quote */
+    .s1-photo-wrap {
       position: relative;
+      border-radius: 20px;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .s1-right img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
+    .s1-photo-wrap img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: center top;
       display: block;
     }
 
-    .s1-right-overlay {
+    .s1-photo-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(250,247,242,.08) 0%, rgba(44,24,16,.2) 100%);
+      background: linear-gradient(to top, rgba(44,24,16,.82) 35%, rgba(44,24,16,.15) 70%, transparent 100%);
     }
 
-    /* ── SECTION 2 — PAIEMENT ── */
-    .s2 {
-      background: var(--mocha);
-      padding: 80px 24px 100px;
-      position: relative;
-    }
-
-    .s2::before {
-      content: '';
+    .s1-photo-quote {
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--terracotta), var(--gold), var(--terracotta));
+      bottom: 28px;
+      left: 22px;
+      right: 22px;
+    }
+
+    .s1-photo-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--cream);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .s1-photo-quote cite {
+      display: block;
+      font-size: .58rem;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-top: 10px;
+      border-top: 1px solid rgba(201,169,110,.3);
+    }
+
+    /* ── SECTION 2 — PAIEMENT CLAIR ── */
+    .s2 {
+      background: #fff;
+      padding: 72px 24px 90px;
+      border-top: 1px solid var(--rose-mid);
     }
 
     .s2-inner { max-width: 860px; margin: 0 auto; }
@@ -198,23 +207,23 @@
     .s2-header { text-align: center; margin-bottom: 52px; }
 
     .s2-tag {
-      font-size: .62rem; font-weight: 700;
+      font-size: .6rem; font-weight: 700;
       letter-spacing: .18em; text-transform: uppercase;
-      color: var(--gold);
-      display: block; margin-bottom: 14px;
+      color: var(--terracotta);
+      display: block; margin-bottom: 12px;
     }
 
     .s2-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 2.4rem);
       font-weight: 900;
-      color: var(--cream);
+      color: var(--mocha);
       margin-bottom: 10px;
     }
 
     .s2-title em { font-style: italic; color: var(--terracotta); }
 
-    .s2-sub { font-size: .88rem; color: var(--rose); opacity: .8; }
+    .s2-sub { font-size: .86rem; color: #9a7a6a; }
 
     .cards {
       display: grid;
@@ -225,32 +234,36 @@
     .card {
       background: var(--cream);
       border-radius: 20px;
-      padding: 36px 32px 32px;
+      padding: 36px 30px 30px;
       display: flex; flex-direction: column;
       position: relative;
-      border: 2px solid transparent;
-      transition: transform .2s, box-shadow .2s;
+      border: 1.5px solid var(--rose-mid);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
     }
 
-    .card:hover { transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(192,120,120,.15);
+      border-color: var(--terracotta);
+    }
 
     .card-popular {
       background: #fff;
       border-color: var(--terracotta);
+      box-shadow: 0 4px 24px rgba(192,120,120,.12);
     }
 
     .badge {
       position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(90deg, var(--terracotta), var(--gold));
-      color: #fff;
-      font-size: .62rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; padding: 6px 20px; border-radius: 20px;
+      background: var(--terracotta); color: #fff;
+      font-size: .6rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: 5px 18px; border-radius: 20px;
       white-space: nowrap;
     }
 
     .card-type {
-      font-size: .68rem; font-weight: 700; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--terracotta); margin-bottom: 20px;
+      font-size: .66rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--terracotta); margin-bottom: 18px;
     }
 
     .price-old { font-size: .9rem; color: #c0a0a0; text-decoration: line-through; margin-bottom: 2px; }
@@ -261,27 +274,27 @@
       line-height: 1; margin-bottom: 4px;
     }
 
-    .price-new sup { font-size: 1.2rem; vertical-align: super; }
+    .price-new sup { font-size: 1.1rem; vertical-align: super; }
 
-    .price-note { font-size: .75rem; color: #9a7a6a; margin-bottom: 10px; }
+    .price-note { font-size: .73rem; color: #9a7a6a; margin-bottom: 8px; }
 
     .savings {
       display: inline-block;
-      background: rgba(46,125,50,.1); color: #2e7d32;
-      font-size: .66rem; font-weight: 600;
-      padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
+      background: rgba(46,125,50,.08); color: #2e7d32;
+      font-size: .65rem; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 18px;
     }
 
-    .divider { height: 1px; background: var(--rose-mid); margin-bottom: 18px; }
+    .divider { height: 1px; background: var(--rose-mid); margin-bottom: 16px; }
 
     .features {
       list-style: none;
       display: flex; flex-direction: column; gap: 9px;
-      margin-bottom: 26px; flex: 1;
+      margin-bottom: 24px; flex: 1;
     }
 
     .features li {
-      font-size: .81rem; color: #5a3a2a;
+      font-size: .8rem; color: #5a3a2a;
       display: flex; align-items: flex-start; gap: 9px; line-height: 1.5;
     }
 
@@ -289,46 +302,46 @@
 
     .btn-pay {
       display: block; text-align: center;
-      padding: 16px 24px; border-radius: 50px;
-      font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 700;
-      text-decoration: none; letter-spacing: .03em;
+      padding: 15px 24px; border-radius: 50px;
+      font-family: 'Inter', sans-serif; font-size: .86rem; font-weight: 700;
+      text-decoration: none; letter-spacing: .02em;
       transition: transform .2s, box-shadow .2s;
     }
 
-    .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,120,120,.4); }
+    .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,120,120,.35); }
     .btn-primary-pay { background: var(--terracotta); color: #fff; }
     .btn-secondary-pay { background: var(--mocha); color: var(--cream); }
 
     .guarantee {
-      margin-top: 36px; text-align: center;
-      font-size: .76rem; color: var(--rose); opacity: .7;
+      margin-top: 32px; text-align: center;
+      font-size: .74rem; color: #b09a9a;
     }
 
     /* FOOTER */
     footer {
-      background: #1e0f09;
-      padding: 36px 24px; text-align: center;
+      background: var(--mocha);
+      padding: 32px 24px; text-align: center;
     }
 
     .foot-logo-text {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--cream); letter-spacing: .08em; margin-bottom: 8px;
+      font-size: .95rem; font-weight: 700;
+      color: var(--cream); letter-spacing: .08em; margin-bottom: 7px;
     }
 
     .foot-logo-text span { color: var(--terracotta); }
-    .foot-sub { font-size: .72rem; color: var(--rose); opacity: .5; }
+    .foot-sub { font-size: .7rem; color: var(--rose); opacity: .5; }
 
     /* RESPONSIVE */
     @media (max-width: 860px) {
-      .s1 { grid-template-columns: 1fr; min-height: auto; }
-      .s1-right { height: 62vw; max-height: 400px; order: -1; }
-      .s1-left { padding: 48px 24px; }
+      .s1-inner { grid-template-columns: 1fr; gap: 36px; padding: 40px 24px 0; }
+      .s1-photo-wrap img { height: 400px; }
       .cards { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
-      .s1-title { font-size: 2rem; }
+      .s1-title { font-size: 2.2rem; }
+      .s1-photo-wrap img { height: 320px; }
     }
   </style>
 </head>
@@ -342,58 +355,59 @@
 
   <!-- SECTION 1 -->
   <section class="s1">
+    <div class="s1-inner">
 
-    <div class="s1-left">
-      <span class="tag-pill">✦ Offre de lancement</span>
+      <div class="s1-left">
+        <span class="tag-pill">✦ Offre de lancement</span>
 
-      <h1 class="s1-title">
-        On travaille<br>
-        <em>ensemble</em><br>
-        dès maintenant.
-      </h1>
+        <h1 class="s1-title">
+          On travaille<br>
+          <span class="line-light">ensemble</span>
+          <span class="line-big">dès maintenant.</span>
+        </h1>
 
-      <p class="s1-quote">« Ce n'est pas un cours.<br>C'est un tournant. »</p>
-      <p class="s1-cite">Manon Bian — Fondatrice PROPULSE</p>
+        <div class="inclus-list">
+          <div class="inclus-row">
+            <span class="inclus-emoji">🎯</span>
+            <div><strong>La méthode complète</strong><span>— UGC, social media, affiliation, marketing digital</span></div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">💬</span>
+            <div><strong>Suivi 1:1 avec Manon</strong><span>— Disponible et là à chaque étape</span></div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">⚡</span>
+            <div><strong>Outils & templates exclusifs</strong><span>— Scripts et modèles prêts à l'emploi</span></div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">🤝</span>
+            <div><strong>Communauté privée</strong><span>— Entraide avec d'autres créatrices</span></div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">📈</span>
+            <div><strong>Stratégie sur-mesure</strong><span>— Adaptée à ton profil et tes objectifs</span></div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">🏆</span>
+            <div><strong>Accès à vie</strong><span>— Mises à jour incluses pour toujours</span></div>
+          </div>
+        </div>
 
-      <div class="s1-divider"></div>
+        <a href="#paiement" class="s1-cta" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'}); return false;">
+          Choisir ma formule →
+        </a>
+      </div>
 
-      <div class="inclus-list">
-        <div class="inclus-row">
-          <span class="inclus-emoji">🎯</span>
-          <div><strong>La méthode complète</strong><span>— UGC, social media, affiliation, marketing digital</span></div>
-        </div>
-        <div class="inclus-row">
-          <span class="inclus-emoji">💬</span>
-          <div><strong>Suivi 1:1 avec Manon</strong><span>— Disponible et là à chaque étape</span></div>
-        </div>
-        <div class="inclus-row">
-          <span class="inclus-emoji">⚡</span>
-          <div><strong>Outils & templates exclusifs</strong><span>— Scripts, modèles prêts à l'emploi</span></div>
-        </div>
-        <div class="inclus-row">
-          <span class="inclus-emoji">🤝</span>
-          <div><strong>Communauté privée</strong><span>— Entraide avec d'autres créatrices</span></div>
-        </div>
-        <div class="inclus-row">
-          <span class="inclus-emoji">📈</span>
-          <div><strong>Stratégie sur-mesure</strong><span>— Adaptée à ton profil et tes objectifs</span></div>
-        </div>
-        <div class="inclus-row">
-          <span class="inclus-emoji">🏆</span>
-          <div><strong>Accès à vie</strong><span>— Mises à jour incluses pour toujours</span></div>
+      <div class="s1-photo-wrap">
+        <img src="./DSC_0879.jpg" alt="Manon Bian">
+        <div class="s1-photo-overlay"></div>
+        <div class="s1-photo-quote">
+          <blockquote>« Ce n'est pas un cours.<br>C'est un tournant. »</blockquote>
+          <cite>Manon Bian — Fondatrice PROPULSE</cite>
         </div>
       </div>
 
-      <a href="#paiement" class="s1-cta" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'}); return false;">
-        Voir les formules →
-      </a>
     </div>
-
-    <div class="s1-right">
-      <img src="./DSC_0879.jpg" alt="Manon Bian">
-      <div class="s1-right-overlay"></div>
-    </div>
-
   </section>
 
   <!-- SECTION 2 — PAIEMENT -->
