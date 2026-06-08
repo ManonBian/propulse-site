@@ -336,9 +336,10 @@
       .s1-mobile-hero {
         display: block !important;
         position: relative;
-        height: 92vh;
-        min-height: 520px;
-        overflow: hidden;
+        height: 105vw;
+        min-height: 560px;
+        max-height: 720px;
+        overflow: visible;
       }
 
       .s1-mobile-hero .mob-bg {
@@ -347,14 +348,14 @@
         width: 100%; height: 100%;
         object-fit: cover;
         object-position: center top;
-        opacity: .55;
+        opacity: .82;
       }
 
       .s1-mobile-hero .mob-overlay {
         position: absolute; inset: 0;
         background:
-          linear-gradient(to bottom, rgba(250,247,242,.6) 0%, transparent 35%),
-          linear-gradient(to top, rgba(44,24,16,.65) 0%, transparent 45%);
+          linear-gradient(to bottom, rgba(250,247,242,.15) 0%, transparent 20%),
+          linear-gradient(to top, var(--cream) 0%, rgba(250,247,242,.6) 18%, transparent 40%);
       }
 
       .s1-mobile-hero .mob-content {
@@ -363,15 +364,15 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 24px 20px 28px;
+        padding: 20px 20px 48px;
       }
 
       .s1-mobile-hero .mob-top {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 14px;
-        margin-top: 12px;
+        gap: 12px;
+        margin-top: 8px;
       }
 
       .s1-mobile-hero .mob-tag {
