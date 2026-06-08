@@ -3085,5 +3085,79 @@
       }
     });
   </script>
+
+  <!-- SECTION PAIEMENT CACHÉE — visible uniquement avec ?rejoindre=propulse -->
+  <section id="payment-section" style="display:none; background:#FAF7F2; padding:80px 20px;">
+    <style>
+      .pay-wrap { max-width:820px; margin:0 auto; text-align:center; }
+      .pay-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,5vw,2.6rem); font-weight:800; color:#2C1810; margin-bottom:12px; }
+      .pay-title em { font-style:italic; color:#C07878; }
+      .pay-sub { font-size:.95rem; color:#8a6a5a; margin-bottom:52px; }
+      .pay-cards { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; }
+      .pay-card { background:#fff; border-radius:24px; padding:40px 36px; flex:1; min-width:280px; max-width:360px; box-shadow:0 8px 48px rgba(44,24,16,.09); display:flex; flex-direction:column; position:relative; }
+      .pay-card-popular { border:2px solid #C07878; }
+      .pay-badge { position:absolute; top:20px; right:20px; background:#C07878; color:#fff; font-size:.65rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:5px 12px; border-radius:20px; }
+      .pay-type { font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#C07878; margin-bottom:20px; }
+      .pay-old { font-size:.95rem; color:#b8a0a0; text-decoration:line-through; margin-bottom:4px; }
+      .pay-new { font-family:'Playfair Display',serif; font-size:3rem; font-weight:800; color:#2C1810; line-height:1; margin-bottom:6px; }
+      .pay-new sup { font-size:1.4rem; vertical-align:super; }
+      .pay-note { font-size:.78rem; color:#9a7a6a; margin-bottom:28px; }
+      .pay-divider { height:1px; background:#F4ECEC; margin-bottom:24px; }
+      .pay-features { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:32px; flex:1; text-align:left; }
+      .pay-features li { font-size:.85rem; color:#5a3a2a; display:flex; align-items:flex-start; gap:10px; line-height:1.5; }
+      .pay-features li::before { content:'✓'; color:#C07878; font-weight:700; flex-shrink:0; }
+      .pay-btn { display:block; text-align:center; padding:16px 24px; border-radius:14px; font-family:'Inter',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; transition:transform .2s,box-shadow .2s; }
+      .pay-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(192,120,120,.3); }
+      .pay-btn-primary { background:#C07878; color:#fff; }
+      .pay-btn-secondary { background:#F4ECEC; color:#C07878; }
+      .pay-guarantee { margin-top:40px; font-size:.8rem; color:#9a7a6a; }
+      @media(max-width:600px){ .pay-cards{flex-direction:column;align-items:center;} .pay-card{max-width:100%;} }
+    </style>
+    <div class="pay-wrap">
+      <h2 class="pay-title">Prête à tout <em>changer</em> ?</h2>
+      <p class="pay-sub">Choisis la formule qui te correspond — les deux donnent accès au même accompagnement complet.</p>
+      <div class="pay-cards">
+        <div class="pay-card">
+          <p class="pay-type">Paiement unique</p>
+          <p class="pay-old">1 200 €</p>
+          <p class="pay-new"><sup>€</sup>897</p>
+          <p class="pay-note">Un seul règlement, c'est tout.</p>
+          <div class="pay-divider"></div>
+          <ul class="pay-features">
+            <li>Accès complet à la méthode PROPULSE</li>
+            <li>Suivi personnalisé pendant tout l'accompagnement</li>
+            <li>Outils et ressources exclusifs</li>
+            <li>Communauté privée</li>
+            <li>Prix offre de lancement — limité</li>
+          </ul>
+          <a href="https://buy.stripe.com/00w5kF3SQ8tw0oGdl77ok02" class="pay-btn pay-btn-secondary" target="_blank">Rejoindre pour 897€ →</a>
+        </div>
+        <div class="pay-card pay-card-popular">
+          <div class="pay-badge">Populaire</div>
+          <p class="pay-type">Paiement en 2 fois</p>
+          <p class="pay-old">2 × 650 €</p>
+          <p class="pay-new"><sup>€</sup>497</p>
+          <p class="pay-note">× 2 mensualités — soit 994€ au total</p>
+          <div class="pay-divider"></div>
+          <ul class="pay-features">
+            <li>Accès complet à la méthode PROPULSE</li>
+            <li>Suivi personnalisé pendant tout l'accompagnement</li>
+            <li>Outils et ressources exclusifs</li>
+            <li>Communauté privée</li>
+            <li>Étalement sans frais cachés</li>
+          </ul>
+          <a href="https://buy.stripe.com/eVq4gB9daaBE3ASftf7ok01" class="pay-btn pay-btn-primary" target="_blank">Rejoindre pour 2× 497€ →</a>
+        </div>
+      </div>
+      <p class="pay-guarantee">🔒 Paiement 100% sécurisé via Stripe — Carte bancaire, Apple Pay</p>
+    </div>
+  </section>
+
+  <script>
+    if (new URLSearchParams(window.location.search).get('rejoindre') === 'propulse') {
+      var s = document.getElementById('payment-section');
+      if (s) { s.style.display = 'block'; setTimeout(function(){ s.scrollIntoView({behavior:'smooth'}); }, 400); }
+    }
+  </script>
 </body>
 </html>
