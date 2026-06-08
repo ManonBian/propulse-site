@@ -328,67 +328,131 @@
     /* RESPONSIVE MOBILE */
     @media (max-width: 580px) {
 
-      /* Header titre compact */
-      .s1-header {
-        padding: 32px 20px 24px;
+      /* Cache le header et le body desktop */
+      .s1-header { display: none; }
+      .s1-body { display: none; }
+
+      /* Hero mobile = photo en arrière-plan + titre + quote */
+      .s1-mobile-hero {
+        display: block !important;
+        position: relative;
+        height: 92vh;
+        min-height: 520px;
+        overflow: hidden;
       }
 
-      .s1-title {
-        font-size: 2rem;
-      }
-
-      /* Photo en fond plein écran */
-      .s1-body {
-        grid-template-columns: 1fr;
-        gap: 0;
-        padding: 0;
-      }
-
-      .s1-photo-wrap {
-        border-radius: 0;
-        height: 75vw;
-        min-height: 280px;
-        max-height: 380px;
-      }
-
-      .s1-photo-wrap img {
-        height: 100%;
-        width: 100%;
+      .s1-mobile-hero .mob-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%; height: 100%;
         object-fit: cover;
+        object-position: center top;
+        opacity: .55;
       }
 
-      /* Overlay plus marqué sur mobile */
-      .s1-photo-overlay {
-        background: linear-gradient(to top, rgba(44,24,16,.88) 35%, rgba(44,24,16,.25) 70%, transparent 100%);
+      .s1-mobile-hero .mob-overlay {
+        position: absolute; inset: 0;
+        background:
+          linear-gradient(to bottom, rgba(250,247,242,.6) 0%, transparent 35%),
+          linear-gradient(to top, rgba(44,24,16,.65) 0%, transparent 45%);
       }
 
-      /* Quote visible sur mobile */
-      .s1-photo-quote blockquote {
-        font-size: .95rem;
+      .s1-mobile-hero .mob-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px 20px 28px;
       }
 
-      /* Inclus à droite → dessous sur mobile */
-      .s1-right {
-        padding: 32px 20px;
+      .s1-mobile-hero .mob-top {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin-top: 12px;
+      }
+
+      .s1-mobile-hero .mob-tag {
+        display: inline-flex;
+        font-size: .58rem;
+        font-weight: 700;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--terracotta);
+        background: rgba(250,247,242,.88);
+        border-radius: 20px;
+        padding: 6px 14px;
+      }
+
+      .s1-mobile-hero .mob-title {
+        font-family: 'Playfair Display', serif;
+        font-weight: 900;
+        font-size: 2.3rem;
+        line-height: 1.08;
+        color: var(--mocha);
+      }
+
+      .s1-mobile-hero .mob-title em {
+        font-style: italic;
+        color: var(--terracotta);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.1em;
+      }
+
+      .s1-mobile-hero .mob-bottom {
+        align-self: flex-start;
+      }
+
+      .s1-mobile-hero .mob-quote {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: .98rem;
+        color: var(--cream);
+        line-height: 1.55;
+        margin-bottom: 10px;
+      }
+
+      .s1-mobile-hero .mob-cite {
+        font-size: .56rem;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: block;
+        padding-top: 9px;
+        border-top: 1px solid rgba(201,169,110,.35);
+      }
+
+      /* Inclus mobile en dessous */
+      .s1-mobile-inclus {
+        display: block !important;
+        padding: 36px 20px;
         background: var(--cream);
       }
 
-      .s1-right-title {
+      .s1-mobile-inclus .mob-inclus-title {
+        font-family: 'Playfair Display', serif;
         font-size: 1rem;
+        font-weight: 700;
+        color: var(--mocha);
         margin-bottom: 16px;
       }
 
-      .inclus-row {
-        padding: 12px 14px;
-        border-radius: 12px;
+      .s1-mobile-inclus .mob-inclus-title span {
+        color: var(--terracotta);
+        font-style: italic;
       }
 
+      .s1-mobile-inclus .inclus-list { gap: 8px; margin-bottom: 28px; }
+
+      .inclus-row { padding: 12px 14px; border-radius: 12px; }
       .inclus-text strong { font-size: .8rem; }
-      .inclus-text span { font-size: .72rem; }
+      .inclus-text span { font-size: .7rem; }
 
-      .inclus-list { gap: 8px; margin-bottom: 28px; }
-
-      .s1-cta {
+      .s1-mobile-inclus .s1-cta {
         width: 100%;
         justify-content: center;
         padding: 16px 24px;
@@ -398,11 +462,8 @@
       .s2 { padding: 48px 16px 64px; }
       .s2-header { margin-bottom: 36px; }
       .cards { grid-template-columns: 1fr; gap: 28px; }
-
       .card { padding: 32px 22px 26px; }
-
       .price-new { font-size: 2.4rem; }
-
       .btn-pay { padding: 16px 20px; font-size: .9rem; }
     }
   </style>
@@ -414,6 +475,36 @@
       <img src="./logo-propulse.png" alt="PROPULSE par Manon Bian">
     </a>
   </nav>
+
+  <!-- HERO MOBILE UNIQUEMENT -->
+  <div class="s1-mobile-hero" style="display:none;">
+    <img class="mob-bg" src="./DSC_0879.jpg" alt="Manon Bian">
+    <div class="mob-overlay"></div>
+    <div class="mob-content">
+      <div class="mob-top">
+        <span class="mob-tag">✦ Offre de lancement</span>
+        <h1 class="mob-title">On travaille <em>ensemble</em><br>dès maintenant.</h1>
+      </div>
+      <div class="mob-bottom">
+        <p class="mob-quote">« Tu n'as pas besoin de plus de temps.<br>Tu as besoin de la bonne méthode. »</p>
+        <cite class="mob-cite">Manon Bian — Fondatrice PROPULSE</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- INCLUS MOBILE UNIQUEMENT -->
+  <div class="s1-mobile-inclus" style="display:none;">
+    <p class="mob-inclus-title">Tout ce qu'il faut pour <span>réussir</span>.</p>
+    <div class="inclus-list">
+      <div class="inclus-row"><span class="inclus-emoji">🎯</span><div class="inclus-text"><strong>La méthode complète</strong><span>UGC, social media, affiliation, marketing digital</span></div></div>
+      <div class="inclus-row"><span class="inclus-emoji">💬</span><div class="inclus-text"><strong>Suivi 1:1 avec Manon</strong><span>Disponible et là à chaque étape</span></div></div>
+      <div class="inclus-row"><span class="inclus-emoji">⚡</span><div class="inclus-text"><strong>Outils & templates exclusifs</strong><span>Scripts et modèles prêts à l'emploi</span></div></div>
+      <div class="inclus-row"><span class="inclus-emoji">🤝</span><div class="inclus-text"><strong>Communauté privée</strong><span>Entraide avec d'autres créatrices</span></div></div>
+      <div class="inclus-row"><span class="inclus-emoji">📈</span><div class="inclus-text"><strong>Stratégie sur-mesure</strong><span>Adaptée à ton profil et tes objectifs</span></div></div>
+      <div class="inclus-row"><span class="inclus-emoji">🏆</span><div class="inclus-text"><strong>Accès à vie</strong><span>Mises à jour incluses pour toujours</span></div></div>
+    </div>
+    <a href="#paiement" class="s1-cta" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'}); return false;">Choisir ma formule →</a>
+  </div>
 
   <!-- SECTION 1 -->
   <section class="s1">
