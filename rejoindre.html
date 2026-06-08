@@ -18,7 +18,6 @@
       --rose-light: #F4ECEC;
       --rose-mid: #E8D5D5;
     }
-
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--mocha); overflow-x: hidden; }
@@ -39,18 +38,13 @@
       padding-bottom: 72px;
     }
 
-    .s1-inner {
+    /* Titre centré en haut */
+    .s1-header {
       max-width: 1060px;
       margin: 0 auto;
-      padding: 64px 40px 0;
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 56px;
-      align-items: start;
+      padding: 56px 40px 44px;
+      text-align: center;
     }
-
-    /* Gauche — titre + inclus */
-    .s1-left { display: flex; flex-direction: column; }
 
     .tag-pill {
       display: inline-flex;
@@ -63,90 +57,37 @@
       color: var(--terracotta);
       background: var(--rose-light);
       border-radius: 20px;
-      padding: 7px 16px;
-      width: fit-content;
-      margin-bottom: 24px;
+      padding: 7px 18px;
+      margin-bottom: 20px;
     }
 
     .s1-title {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
-      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-size: clamp(2.6rem, 5vw, 4rem);
       line-height: 1.06;
       color: var(--mocha);
-      margin-bottom: 40px;
     }
 
     .s1-title .line-light {
-      font-weight: 400;
       font-style: italic;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1em;
       color: var(--terracotta);
-      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.12em;
     }
 
-    .s1-title .line-big {
-      font-size: 1em;
-      display: block;
+    /* Grille photo + inclus */
+    .s1-body {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 48px;
+      align-items: start;
     }
 
-    /* Inclus list */
-    .inclus-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 40px;
-    }
-
-    .inclus-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 13px 18px;
-      border-radius: 12px;
-      background: #fff;
-      border: 1px solid var(--rose-mid);
-      transition: border-color .2s, box-shadow .2s;
-    }
-
-    .inclus-row:hover {
-      border-color: var(--terracotta);
-      box-shadow: 0 2px 12px rgba(192,120,120,.1);
-    }
-
-    .inclus-emoji { font-size: .95rem; flex-shrink: 0; }
-
-    .inclus-row strong {
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--mocha);
-    }
-
-    .inclus-row span {
-      font-size: .75rem;
-      color: #9a7a6a;
-      margin-left: 3px;
-    }
-
-    .s1-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--terracotta);
-      color: #fff;
-      font-size: .85rem;
-      font-weight: 700;
-      padding: 15px 32px;
-      border-radius: 50px;
-      text-decoration: none;
-      width: fit-content;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .s1-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(192,120,120,.38); }
-
-    /* Droite — photo avec quote */
+    /* Photo */
     .s1-photo-wrap {
       position: relative;
       border-radius: 20px;
@@ -156,7 +97,7 @@
 
     .s1-photo-wrap img {
       width: 100%;
-      height: 500px;
+      height: 520px;
       object-fit: cover;
       object-position: center top;
       display: block;
@@ -164,14 +105,12 @@
 
     .s1-photo-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(44,24,16,.82) 35%, rgba(44,24,16,.15) 70%, transparent 100%);
+      background: linear-gradient(to top, rgba(44,24,16,.78) 30%, rgba(44,24,16,.1) 65%, transparent 100%);
     }
 
     .s1-photo-quote {
       position: absolute;
-      bottom: 28px;
-      left: 22px;
-      right: 22px;
+      bottom: 26px; left: 22px; right: 22px;
     }
 
     .s1-photo-quote blockquote {
@@ -195,7 +134,80 @@
       border-top: 1px solid rgba(201,169,110,.3);
     }
 
-    /* ── SECTION 2 — PAIEMENT CLAIR ── */
+    /* Inclus à droite */
+    .s1-right {
+      display: flex;
+      flex-direction: column;
+      padding-top: 8px;
+    }
+
+    .s1-right-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--mocha);
+      margin-bottom: 20px;
+    }
+
+    .s1-right-title span { color: var(--terracotta); font-style: italic; }
+
+    .inclus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .inclus-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid var(--rose-mid);
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .inclus-row:hover {
+      border-color: var(--terracotta);
+      box-shadow: 0 2px 12px rgba(192,120,120,.1);
+    }
+
+    .inclus-emoji { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+    .inclus-text strong {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--mocha);
+      margin-bottom: 2px;
+    }
+
+    .inclus-text span {
+      font-size: .75rem;
+      color: #9a7a6a;
+      line-height: 1.4;
+    }
+
+    .s1-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      width: fit-content;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .s1-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(192,120,120,.38); }
+
+    /* ── SECTION 2 — PAIEMENT ── */
     .s2 {
       background: #fff;
       padding: 72px 24px 90px;
@@ -222,7 +234,6 @@
     }
 
     .s2-title em { font-style: italic; color: var(--terracotta); }
-
     .s2-sub { font-size: .86rem; color: #9a7a6a; }
 
     .cards {
@@ -241,17 +252,8 @@
       transition: transform .2s, box-shadow .2s, border-color .2s;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(192,120,120,.15);
-      border-color: var(--terracotta);
-    }
-
-    .card-popular {
-      background: #fff;
-      border-color: var(--terracotta);
-      box-shadow: 0 4px 24px rgba(192,120,120,.12);
-    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(192,120,120,.15); border-color: var(--terracotta); }
+    .card-popular { background: #fff; border-color: var(--terracotta); box-shadow: 0 4px 24px rgba(192,120,120,.12); }
 
     .badge {
       position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
@@ -261,11 +263,7 @@
       white-space: nowrap;
     }
 
-    .card-type {
-      font-size: .66rem; font-weight: 700; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--terracotta); margin-bottom: 18px;
-    }
-
+    .card-type { font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 18px; }
     .price-old { font-size: .9rem; color: #c0a0a0; text-decoration: line-through; margin-bottom: 2px; }
 
     .price-new {
@@ -275,7 +273,6 @@
     }
 
     .price-new sup { font-size: 1.1rem; vertical-align: super; }
-
     .price-note { font-size: .73rem; color: #9a7a6a; margin-bottom: 8px; }
 
     .savings {
@@ -312,36 +309,25 @@
     .btn-primary-pay { background: var(--terracotta); color: #fff; }
     .btn-secondary-pay { background: var(--mocha); color: var(--cream); }
 
-    .guarantee {
-      margin-top: 32px; text-align: center;
-      font-size: .74rem; color: #b09a9a;
-    }
+    .guarantee { margin-top: 32px; text-align: center; font-size: .74rem; color: #b09a9a; }
 
     /* FOOTER */
-    footer {
-      background: var(--mocha);
-      padding: 32px 24px; text-align: center;
-    }
-
-    .foot-logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: .95rem; font-weight: 700;
-      color: var(--cream); letter-spacing: .08em; margin-bottom: 7px;
-    }
-
+    footer { background: var(--mocha); padding: 32px 24px; text-align: center; }
+    .foot-logo-text { font-family: 'Playfair Display', serif; font-size: .95rem; font-weight: 700; color: var(--cream); letter-spacing: .08em; margin-bottom: 7px; }
     .foot-logo-text span { color: var(--terracotta); }
     .foot-sub { font-size: .7rem; color: var(--rose); opacity: .5; }
 
     /* RESPONSIVE */
     @media (max-width: 860px) {
-      .s1-inner { grid-template-columns: 1fr; gap: 36px; padding: 40px 24px 0; }
+      .s1-body { grid-template-columns: 1fr; gap: 32px; padding: 0 24px; }
       .s1-photo-wrap img { height: 400px; }
+      .s1-header { padding: 48px 24px 32px; }
       .cards { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
-      .s1-title { font-size: 2.2rem; }
-      .s1-photo-wrap img { height: 320px; }
+      .s1-title { font-size: 2.4rem; }
+      .s1-photo-wrap img { height: 340px; }
     }
   </style>
 </head>
@@ -355,48 +341,17 @@
 
   <!-- SECTION 1 -->
   <section class="s1">
-    <div class="s1-inner">
 
-      <div class="s1-left">
-        <span class="tag-pill">✦ Offre de lancement</span>
+    <!-- Titre centré -->
+    <div class="s1-header">
+      <div class="tag-pill">✦ Offre de lancement</div>
+      <h1 class="s1-title">
+        On travaille <span class="line-light">ensemble</span><br>dès maintenant.
+      </h1>
+    </div>
 
-        <h1 class="s1-title">
-          On travaille<br>
-          <span class="line-light">ensemble</span>
-          <span class="line-big">dès maintenant.</span>
-        </h1>
-
-        <div class="inclus-list">
-          <div class="inclus-row">
-            <span class="inclus-emoji">🎯</span>
-            <div><strong>La méthode complète</strong><span>— UGC, social media, affiliation, marketing digital</span></div>
-          </div>
-          <div class="inclus-row">
-            <span class="inclus-emoji">💬</span>
-            <div><strong>Suivi 1:1 avec Manon</strong><span>— Disponible et là à chaque étape</span></div>
-          </div>
-          <div class="inclus-row">
-            <span class="inclus-emoji">⚡</span>
-            <div><strong>Outils & templates exclusifs</strong><span>— Scripts et modèles prêts à l'emploi</span></div>
-          </div>
-          <div class="inclus-row">
-            <span class="inclus-emoji">🤝</span>
-            <div><strong>Communauté privée</strong><span>— Entraide avec d'autres créatrices</span></div>
-          </div>
-          <div class="inclus-row">
-            <span class="inclus-emoji">📈</span>
-            <div><strong>Stratégie sur-mesure</strong><span>— Adaptée à ton profil et tes objectifs</span></div>
-          </div>
-          <div class="inclus-row">
-            <span class="inclus-emoji">🏆</span>
-            <div><strong>Accès à vie</strong><span>— Mises à jour incluses pour toujours</span></div>
-          </div>
-        </div>
-
-        <a href="#paiement" class="s1-cta" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'}); return false;">
-          Choisir ma formule →
-        </a>
-      </div>
+    <!-- Photo à gauche + inclus à droite -->
+    <div class="s1-body">
 
       <div class="s1-photo-wrap">
         <img src="./DSC_0879.jpg" alt="Manon Bian">
@@ -405,6 +360,59 @@
           <blockquote>« Ce n'est pas un cours.<br>C'est un tournant. »</blockquote>
           <cite>Manon Bian — Fondatrice PROPULSE</cite>
         </div>
+      </div>
+
+      <div class="s1-right">
+        <p class="s1-right-title">Tout ce qu'il faut pour <span>réussir</span>.</p>
+
+        <div class="inclus-list">
+          <div class="inclus-row">
+            <span class="inclus-emoji">🎯</span>
+            <div class="inclus-text">
+              <strong>La méthode complète</strong>
+              <span>UGC, social media, affiliation, marketing digital</span>
+            </div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">💬</span>
+            <div class="inclus-text">
+              <strong>Suivi 1:1 avec Manon</strong>
+              <span>Disponible et là à chaque étape</span>
+            </div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">⚡</span>
+            <div class="inclus-text">
+              <strong>Outils & templates exclusifs</strong>
+              <span>Scripts et modèles prêts à l'emploi</span>
+            </div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">🤝</span>
+            <div class="inclus-text">
+              <strong>Communauté privée</strong>
+              <span>Entraide avec d'autres créatrices</span>
+            </div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">📈</span>
+            <div class="inclus-text">
+              <strong>Stratégie sur-mesure</strong>
+              <span>Adaptée à ton profil et tes objectifs</span>
+            </div>
+          </div>
+          <div class="inclus-row">
+            <span class="inclus-emoji">🏆</span>
+            <div class="inclus-text">
+              <strong>Accès à vie</strong>
+              <span>Mises à jour incluses pour toujours</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#paiement" class="s1-cta" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'}); return false;">
+          Choisir ma formule →
+        </a>
       </div>
 
     </div>
