@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Tes croyances limitantes | Propulse</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --cream:#F8F2EB; --ink:#17130F; --rose:#C4526A; --rose-soft:#DB8FA1;
+    --rose-pale:#F4DAE1; --rose-tint:#F6E3E8; --card:#FFFFFF; --muted:#8C7B6C;
+    --green:#2E8B57; --green-bg:#E7F1EA;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body{background:var(--cream);color:var(--ink);line-height:1.55;padding:20px;min-height:100vh;}
+  .wrap{max-width:680px;margin:0 auto;}
+
+  /* Header */
+  .head{text-align:center;padding:30px 20px 10px;}
+  .badge{display:inline-block;background:var(--rose-pale);color:#A33B54;font-size:11px;font-weight:700;
+    letter-spacing:2px;padding:7px 16px;border-radius:20px;margin-bottom:18px;}
+  h1{font-size:30px;font-weight:800;letter-spacing:-0.5px;margin-bottom:10px;}
+  .sub{color:var(--muted);font-size:15px;max-width:520px;margin:0 auto;}
+
+  /* Progress */
+  .progress-wrap{background:var(--rose-tint);height:8px;border-radius:8px;margin:26px 0 30px;overflow:hidden;}
+  .progress{background:var(--rose);height:100%;width:0;border-radius:8px;transition:width .35s ease;}
+
+  /* Card */
+  .card{background:var(--card);border-radius:20px;padding:32px 28px;box-shadow:0 8px 30px rgba(196,82,106,.08);}
+  .qnum{color:var(--rose);font-weight:700;font-size:12px;letter-spacing:2px;margin-bottom:12px;}
+  .qtext{font-size:21px;font-weight:700;margin-bottom:8px;line-height:1.35;}
+  .qhint{color:var(--muted);font-size:13.5px;margin-bottom:24px;font-style:italic;}
+
+  .opts{display:flex;flex-direction:column;gap:12px;}
+  .opt{background:var(--cream);border:2px solid transparent;border-radius:14px;padding:16px 18px;
+    cursor:pointer;transition:all .18s ease;font-size:15px;font-weight:500;display:flex;align-items:center;gap:14px;}
+  .opt:hover{border-color:var(--rose-soft);transform:translateX(3px);}
+  .opt .dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--rose-soft);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;transition:all .18s;}
+  .opt.selected{border-color:var(--rose);background:var(--rose-tint);}
+  .opt.selected .dot{background:var(--rose);border-color:var(--rose);}
+  .opt.selected .dot::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%;}
+
+  .nav{display:flex;justify-content:space-between;margin-top:28px;gap:12px;}
+  .btn{border:none;border-radius:30px;padding:14px 28px;font-size:15px;font-weight:700;cursor:pointer;
+    transition:all .18s;font-family:inherit;}
+  .btn-primary{background:var(--rose);color:#fff;flex:1;}
+  .btn-primary:hover{background:#A83E56;}
+  .btn-primary:disabled{background:var(--rose-soft);cursor:not-allowed;opacity:.6;}
+  .btn-ghost{background:transparent;color:var(--muted);}
+  .btn-ghost:hover{color:var(--ink);}
+
+  /* Results */
+  .result-card{background:var(--card);border-radius:20px;padding:34px 28px;box-shadow:0 8px 30px rgba(196,82,106,.08);}
+  .score-ring{text-align:center;margin-bottom:24px;}
+  .score-big{font-size:52px;font-weight:800;color:var(--rose);line-height:1;}
+  .score-label{color:var(--muted);font-size:14px;margin-top:6px;}
+  .verdict{background:var(--rose-tint);border-radius:14px;padding:18px 20px;margin-bottom:26px;text-align:center;
+    font-size:15px;font-weight:600;}
+
+  .belief{border-radius:16px;padding:20px 22px;margin-bottom:16px;border-left:5px solid var(--rose);
+    background:var(--cream);}
+  .belief.clear{border-left-color:var(--green);background:var(--green-bg);}
+  .belief-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .belief-icon{font-size:20px;}
+  .belief-title{font-weight:700;font-size:15.5px;}
+  .belief-status{font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:12px;
+    margin-left:auto;text-transform:uppercase;}
+  .status-active{background:var(--rose);color:#fff;}
+  .status-clear{background:var(--green);color:#fff;}
+  .belief-solution{font-size:13.5px;color:#5a4a42;margin-top:8px;}
+  .belief-solution strong{color:var(--ink);}
+
+  .cta{background:var(--ink);color:#fff;border-radius:16px;padding:24px;text-align:center;margin-top:26px;}
+  .cta h3{font-size:18px;margin-bottom:8px;}
+  .cta p{font-size:14px;color:#C9BDB0;margin-bottom:16px;}
+  .cta-btn{display:inline-block;background:var(--rose);color:#fff;text-decoration:none;font-weight:700;
+    padding:13px 28px;border-radius:30px;font-size:14px;}
+
+  .restart{display:block;margin:20px auto 0;background:none;border:none;color:var(--muted);
+    text-decoration:underline;cursor:pointer;font-size:13px;font-family:inherit;}
+
+  .footer{text-align:center;color:var(--muted);font-size:11px;letter-spacing:3px;font-weight:700;
+    margin:30px 0 10px;}
+  .hidden{display:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <div class="badge">MODULE 1 · AUTO-DIAGNOSTIC</div>
+    <h1>Quelles sont tes croyances limitantes ?</h1>
+    <p class="sub">8 questions, 2 minutes. Découvre ce qui te bloque vraiment — et repars avec la solution pour chaque croyance.</p>
+  </div>
+
+  <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+
+  <!-- QUIZ -->
+  <div class="card" id="quiz">
+    <div class="qnum" id="qnum">QUESTION 1 / 8</div>
+    <div class="qtext" id="qtext"></div>
+    <div class="qhint" id="qhint">Sois honnête avec toi-même — personne ne voit tes réponses.</div>
+    <div class="opts" id="opts"></div>
+    <div class="nav">
+      <button class="btn btn-ghost" id="back" onclick="prev()">← Retour</button>
+      <button class="btn btn-primary" id="next" onclick="next()" disabled>Suivant</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="result-card hidden" id="results"></div>
+
+  <div class="footer">PROPULSE</div>
+</div>
+
+<script>
+// 2 questions par croyance (échelle : plus tu es d'accord, plus la croyance est active)
+const questions = [
+  { belief:0, text:"« Je n'ai pas les compétences pour me lancer. »", type:"agree" },
+  { belief:0, text:"J'ai besoin d'une formation ou d'un diplôme de plus avant de commencer.", type:"agree" },
+  { belief:1, text:"« C'est trop risqué, j'ai besoin de sécurité. »", type:"agree" },
+  { belief:1, text:"Un CDI est plus sûr que d'avoir plusieurs clients.", type:"agree" },
+  { belief:2, text:"« Le marché est saturé, il y a trop de concurrence. »", type:"agree" },
+  { belief:2, text:"Il y a déjà trop de créateurs, je n'ai plus ma place.", type:"agree" },
+  { belief:3, text:"« Ce n'est pas le bon moment pour me lancer. »", type:"agree" },
+  { belief:3, text:"J'attends d'avoir plus de temps / d'argent / d'être prête.", type:"agree" }
+];
+
+const scale = [
+  { label:"Pas du tout d'accord", val:0 },
+  { label:"Plutôt pas d'accord", val:1 },
+  { label:"Plutôt d'accord", val:2 },
+  { label:"Tout à fait d'accord", val:3 }
+];
+
+const beliefs = [
+  {
+    icon:"🎯", title:"« Je n'ai pas les compétences »",
+    solution:"<strong>La vérité :</strong> si tu as déjà filmé avec ton téléphone, posté sur Insta ou écrit une légende, tu as déjà les bases. Ces métiers s'apprennent <strong>en faisant</strong>, pas en attendant d'être prête. C'est exactement pour ça que cette formation existe."
+  },
+  {
+    icon:"🛡️", title:"« C'est trop risqué »",
+    solution:"<strong>La vérité :</strong> la vraie sécurité, ce n'est pas dépendre d'un seul employeur qui peut te licencier. C'est avoir <strong>plusieurs clients</strong> et des compétences que tu peux vendre. En freelance, tu perds un client → tu en trouves un autre. En CDI, tu perds ton job → tu perds 100% de tes revenus."
+  },
+  {
+    icon:"📈", title:"« Le marché est saturé »",
+    solution:"<strong>La vérité :</strong> le UGC et le SMM sont <strong>en pleine explosion</strong>. La demande dépasse largement l'offre. Et la concurrence prouve juste que le marché existe : de vrais clients qui paient vraiment. S'il n'y avait personne, ce serait ça, le mauvais signe."
+  },
+  {
+    icon:"⏰", title:"« Ce n'est pas le bon moment »",
+    solution:"<strong>La vérité :</strong> spoiler — il n'y aura <strong>jamais</strong> de bon moment. Pas après tes études, pas quand tu auras économisé, pas quand tu auras plus de temps. Le bon moment, c'est maintenant, avec ce que tu as. Le reste se construit en avançant."
+  }
+];
+
+let current = 0;
+const answers = new Array(questions.length).fill(null);
+
+function render(){
+  const q = questions[current];
+  document.getElementById('qnum').textContent = `QUESTION ${current+1} / ${questions.length}`;
+  document.getElementById('qtext').textContent = q.text;
+  document.getElementById('progress').style.width = ((current)/questions.length*100)+'%';
+
+  const opts = document.getElementById('opts');
+  opts.innerHTML = '';
+  scale.forEach((s,i)=>{
+    const div = document.createElement('div');
+    div.className = 'opt' + (answers[current]===i ? ' selected':'');
+    div.innerHTML = `<span class="dot"></span><span>${s.label}</span>`;
+    div.onclick = ()=>{ answers[current]=i; render(); document.getElementById('next').disabled=false; };
+    opts.appendChild(div);
+  });
+
+  document.getElementById('back').style.visibility = current===0 ? 'hidden':'visible';
+  document.getElementById('next').disabled = answers[current]===null;
+  document.getElementById('next').textContent = current===questions.length-1 ? 'Voir mon résultat →':'Suivant';
+}
+
+function next(){
+  if(answers[current]===null) return;
+  if(current < questions.length-1){ current++; render(); }
+  else showResults();
+}
+function prev(){ if(current>0){ current--; render(); } }
+
+function showResults(){
+  document.getElementById('quiz').classList.add('hidden');
+  document.querySelector('.progress-wrap').classList.add('hidden');
+  document.getElementById('progress').style.width='100%';
+  const res = document.getElementById('results');
+  res.classList.remove('hidden');
+
+  // score par croyance (max 6 par croyance)
+  const scores = [0,0,0,0];
+  questions.forEach((q,i)=>{ scores[q.belief] += scale[answers[i]].val; });
+  const totalActive = scores.filter(s=>s>=3).length;
+
+  let verdict;
+  if(totalActive===0) verdict="Bravo — tu as déjà un mental d'entrepreneuse solide ! 🔥";
+  else if(totalActive===1) verdict="Une seule croyance te freine encore. On la travaille ensemble 💪";
+  else if(totalActive<=2) verdict="Quelques croyances à déconstruire — c'est normal, tout le monde les a au début.";
+  else verdict="Plusieurs croyances t'auto-sabotent. Bonne nouvelle : elles se déconstruisent toutes 🩷";
+
+  let html = `
+    <div class="score-ring">
+      <div class="score-big">${totalActive}/4</div>
+      <div class="score-label">croyance(s) limitante(s) active(s)</div>
+    </div>
+    <div class="verdict">${verdict}</div>
+  `;
+
+  beliefs.forEach((b,i)=>{
+    const active = scores[i] >= 3;
+    html += `
+      <div class="belief ${active?'':'clear'}">
+        <div class="belief-head">
+          <span class="belief-icon">${b.icon}</span>
+          <span class="belief-title">${b.title}</span>
+          <span class="belief-status ${active?'status-active':'status-clear'}">${active?'à déconstruire':'maîtrisée'}</span>
+        </div>
+        <div class="belief-solution">${b.solution}</div>
+      </div>`;
+  });
+
+  html += `
+    <div class="cta">
+      <h3>La peur ne disparaît pas — on avance avec 🩷</h3>
+      <p>La différence entre celles qui réussissent et celles qui restent bloquées, ce n'est pas l'absence de peur. C'est la décision d'avancer quand même.</p>
+      <a class="cta-btn" href="#" onclick="return false;">Continuer la formation →</a>
+    </div>
+    <button class="restart" onclick="restart()">↻ Refaire le quiz</button>
+  `;
+  res.innerHTML = html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function restart(){
+  current=0; answers.fill(null);
+  document.getElementById('results').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  document.querySelector('.progress-wrap').classList.remove('hidden');
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+render();
+</script>
+</body>
+</html>
