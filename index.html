@@ -1357,22 +1357,18 @@
       .virement-grid    { grid-template-columns:1fr; }
     }
 
-    /* ── MARQUEE MÉTHODES (desktop + mobile) ── */
+    /* ── 3 ICÔNES MÉTHODES (statique, desktop + mobile) ── */
     .m5-marquee-wrap {
       display:block;
-      overflow:hidden;
       margin:52px 0 0;
-      -webkit-mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);
-      mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);
     }
     .m5-marquee-track {
       display:flex;
       gap:20px;
-      width:max-content;
-      animation:marquee-scroll 22s linear infinite;
+      justify-content:center;
+      flex-wrap:wrap;
       padding:8px 0 16px;
     }
-    .m5-marquee-track:hover { animation-play-state:paused; }
     .m5-marquee-item {
       display:flex;
       flex-direction:column;
@@ -1936,9 +1932,9 @@
       .video-book-btn { order:3; }
 
       /* Marquee méthodes — overrides mobile */
-      .m5-marquee-wrap { margin:36px -20px 0; -webkit-mask-image:linear-gradient(90deg,transparent,black 12%,black 88%,transparent); mask-image:linear-gradient(90deg,transparent,black 12%,black 88%,transparent); }
-      .m5-marquee-track { gap:12px; animation-duration:18s; padding:6px 0 14px; }
-      .m5-marquee-item { border-radius:18px; padding:18px 16px 14px; min-width:112px; gap:10px; }
+      .m5-marquee-wrap { margin:36px 0 0; }
+      .m5-marquee-track { gap:10px; padding:6px 0 14px; flex-wrap:nowrap; }
+      .m5-marquee-item { border-radius:18px; padding:16px 8px 14px; min-width:0; flex:1 1 0; gap:10px; }
       .m5-marquee-icon { width:46px; height:46px; border-radius:13px; font-size:1.3rem; }
       .m5-marquee-name { font-size:.66rem; font-weight:600; letter-spacing:.05em; }
 
@@ -2477,13 +2473,9 @@
         </div>
       </div>
 
-      <!-- Marquee mobile (items × 2 pour boucle sans saut) -->
+      <!-- 3 icônes statiques -->
       <div class="m5-marquee-wrap">
         <div class="m5-marquee-track">
-          <div class="m5-marquee-item"><div class="m5-marquee-icon i1">🎬</div><span class="m5-marquee-name">Créatrice UGC</span></div>
-          <div class="m5-marquee-item"><div class="m5-marquee-icon i2">📲</div><span class="m5-marquee-name">Social Media Manager</span></div>
-          <div class="m5-marquee-item"><div class="m5-marquee-icon i3">🚀</div><span class="m5-marquee-name">Tes propres réseaux</span></div>
-          <!-- Duplicat pour boucle seamless -->
           <div class="m5-marquee-item"><div class="m5-marquee-icon i1">🎬</div><span class="m5-marquee-name">Créatrice UGC</span></div>
           <div class="m5-marquee-item"><div class="m5-marquee-icon i2">📲</div><span class="m5-marquee-name">Social Media Manager</span></div>
           <div class="m5-marquee-item"><div class="m5-marquee-icon i3">🚀</div><span class="m5-marquee-name">Tes propres réseaux</span></div>
