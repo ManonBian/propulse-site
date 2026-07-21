@@ -2133,14 +2133,45 @@
 
       .hero-mobile {
         display: block !important;
-        margin-top: 72px;
-        padding: 8px 20px 8px;
+        position: relative;
+        margin-top: 60px;
+        height: 105vw;
+        min-height: 560px;
+        max-height: 720px;
+        overflow: visible;
       }
 
-      .hero-mobile .mob-textblock {
+      .hero-mobile .mob-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        opacity: .82;
+      }
+
+      .hero-mobile .mob-overlay {
+        position: absolute; inset: 0;
+        background:
+          linear-gradient(to bottom, rgba(250,247,242,.15) 0%, transparent 20%),
+          linear-gradient(to top, var(--cream) 0%, rgba(250,247,242,.6) 18%, transparent 40%);
+      }
+
+      .hero-mobile .mob-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 20px 48px;
+      }
+
+      .hero-mobile .mob-top {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
+        margin-top: 8px;
       }
 
       .hero-mobile .mob-tag {
@@ -2150,83 +2181,47 @@
         letter-spacing: .18em;
         text-transform: uppercase;
         color: var(--terracotta);
-        background: rgba(192,120,120,.10);
-        border: 1px solid rgba(192,120,120,.22);
+        background: rgba(250,247,242,.88);
         border-radius: 20px;
-        padding: 7px 14px;
-        margin-bottom: 18px;
+        padding: 6px 14px;
       }
 
       .hero-mobile .mob-title {
         font-family: 'Playfair Display', serif;
         font-weight: 900;
-        font-size: 2.15rem;
+        font-size: 2.3rem;
         line-height: 1.08;
         color: var(--mocha);
-        margin-bottom: 14px;
       }
 
       .hero-mobile .mob-title em {
         font-style: italic;
         color: var(--terracotta);
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.12em;
+        font-size: 1.1em;
       }
 
-      .hero-mobile .mob-sub {
-        font-size: .94rem;
-        line-height: 1.65;
-        color: rgba(44,24,16,.62);
-        margin: 0 0 22px;
-      }
-
-      .hero-mobile .mob-cta {
-        display: inline-flex; align-items: center; gap: 9px;
-        background: var(--mocha); color: var(--cream);
-        padding: 14px 28px; border-radius: 100px;
-        font-size: .92rem; font-weight: 600; text-decoration: none;
-      }
-
-      .hero-mobile .mob-note {
-        font-size: .78rem;
-        color: rgba(44,24,16,.42);
-        margin-top: 12px;
-      }
-
-      .hero-mobile .mob-photo-wrap {
-        margin-top: 28px;
-      }
-
-      .hero-mobile .mob-photo {
-        width: 100%;
-        aspect-ratio: 4 / 5;
-        object-fit: cover;
-        object-position: center 38%;
-        border-radius: 22px;
-        display: block;
-        box-shadow: 0 18px 50px rgba(44,24,16,.16);
-      }
+      .hero-mobile .mob-bottom { align-self: flex-start; }
 
       .hero-mobile .mob-quote {
         font-family: 'Cormorant Garamond', serif;
         font-style: italic;
-        font-size: 1.02rem;
-        line-height: 1.5;
-        color: var(--mocha);
-        text-align: center;
-        margin: 18px 6px 0;
+        font-size: .98rem;
+        color: var(--cream);
+        line-height: 1.55;
+        margin-bottom: 10px;
       }
 
       .hero-mobile .mob-cite {
-        display: block;
-        font-family: 'Inter', sans-serif;
+        font-size: .56rem;
         font-style: normal;
-        font-size: .58rem;
         font-weight: 700;
         letter-spacing: .14em;
         text-transform: uppercase;
         color: var(--gold);
-        margin-top: 10px;
+        display: block;
+        padding-top: 9px;
+        border-top: 1px solid rgba(201,169,110,.35);
       }
     }
 
@@ -2340,13 +2335,17 @@
 
   <!-- HERO MOBILE UNIQUEMENT -->
   <div class="hero-mobile" style="display:none;">
-    <div class="mob-textblock">
-      <span class="mob-tag">✦ Formation en ligne</span>
-      <h1 class="mob-title">De 0 à ta liberté<br>financière grâce aux<br><em>réseaux sociaux.</em></h1>
-      <p class="mob-sub">PROPULSE t'accompagne pas à pas pour construire LE business qui te ressemble et générer tes premiers revenus. Même en partant de zéro.</p>
-    </div>
-    <div class="mob-photo-wrap">
-      <img class="mob-photo" src="imagewebp/slide1.webp" alt="Manon Bian – PROPULSE">
+    <img class="mob-bg" src="imagewebp/hero_photo.webp" alt="Manon Bian">
+    <div class="mob-overlay"></div>
+    <div class="mob-content">
+      <div class="mob-top">
+        <span class="mob-tag">✦ Formation en ligne</span>
+        <h1 class="mob-title">De 0 à ta liberté<br>financière grâce aux<br><em>réseaux sociaux.</em></h1>
+      </div>
+      <div class="mob-bottom">
+        <p class="mob-quote">« Tu n'as pas besoin de plus de temps.<br>Tu as besoin de la bonne méthode. »</p>
+        <cite class="mob-cite">Manon Bian — Fondatrice PROPULSE</cite>
+      </div>
     </div>
   </div>
 
