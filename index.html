@@ -1846,6 +1846,9 @@
     }
     .reveal { opacity:0; transform:translateY(44px); transition:opacity .72s ease, transform .72s ease; }
     .reveal.in { opacity:1; transform:translateY(0); }
+    /* iOS Safari : un <iframe> (YouTube) dans un conteneur transformé s'affiche blanc.
+       On retire le transform de la section vidéo (le fondu d'opacité est conservé). */
+    .video-inner { transform:none !important; }
     .d1 { transition-delay:.1s; }
     .d2 { transition-delay:.2s; }
     .d3 { transition-delay:.3s; }
