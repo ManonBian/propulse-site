@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejoindre PROPULSE — Formation & Accompagnement · Manon Bian</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --mocha: #2C1810;
+      --rose: #D4AAAA;
+      --terracotta: #C07878;
+      --gold: #C9A96E;
+      --rose-light: #F4ECEC;
+      --rose-mid: #E8D5D5;
+      --sw: 0 2px 20px rgba(44,24,16,.07);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--mocha); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,247,242,.96); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--rose-mid);
+      height: 60px; display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo img { height: 26px; object-fit: contain; }
+
+    /* ── SECTION 1 : HERO + MODULES (ce que tu retrouves) ── */
+    .s1 { padding: 60px 0 20px; background: var(--cream); }
+    .s1-header { max-width: 1060px; margin: 0 auto; padding: 60px 40px 8px; text-align: center; }
+    .tag-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .6rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--terracotta); background: var(--rose-light);
+      border-radius: 20px; padding: 7px 18px; margin-bottom: 20px;
+    }
+    .s1-title {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.06; color: var(--mocha);
+    }
+    .s1-title .line-light {
+      font-style: italic; color: var(--terracotta);
+      font-family: 'Cormorant Garamond', serif; font-size: 1.12em;
+    }
+    .s1-sub { max-width: 58ch; margin: 20px auto 0; font-size: .95rem; line-height: 1.7; color: #9a7a6a; }
+    .s1-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 26px auto 0; max-width: 760px; }
+    .meta-chip { background: #fff; border: 1px solid var(--rose-mid); border-radius: 16px; padding: 12px 20px; text-align: center; box-shadow: var(--sw); }
+    .meta-chip b { display: block; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; color: var(--mocha); line-height: 1; }
+    .meta-chip span { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: #b09a9a; }
+
+    /* Slider modules */
+    .slider { position: relative; max-width: 760px; margin: 34px auto 0; padding: 0 16px; }
+    .viewport {
+      display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+      scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+      padding: 12px 4px 8px; scrollbar-width: none;
+    }
+    .viewport::-webkit-scrollbar { display: none; }
+    .slide { flex: 0 0 100%; scroll-snap-align: center; }
+
+    .mcard {
+      background: #fff; border: none; border-radius: 26px;
+      padding: 34px 34px 30px; box-shadow: none;
+      min-height: 292px; display: flex; flex-direction: column; position: relative; overflow: hidden;
+    }
+    .mcard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--gold), var(--terracotta)); }
+    .mcard-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+    .mcard-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--rose-light); border-radius: 100px; padding: 8px 16px 8px 8px; }
+    .mcard-badge .dot { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .9rem; }
+    .i1 { background: linear-gradient(135deg,#fdf0e0,#f5dfc0); }
+    .i2 { background: linear-gradient(135deg,#fce8e4,#f5c8c0); }
+    .i3 { background: linear-gradient(135deg,#f4ecec,#e8d5d5); }
+    .i4 { background: linear-gradient(135deg,#e4f0e8,#c4dfc8); }
+    .i5 { background: linear-gradient(135deg,#e8e4f4,#d4c8e8); }
+    .i6 { background: linear-gradient(135deg,#fce4ee,#f5c0d0); }
+    .mcard-badge b { font-size: .8rem; font-weight: 600; color: var(--mocha); letter-spacing: .02em; }
+    .mcard-icon-lg { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; box-shadow: 0 4px 14px rgba(44,24,16,.08); }
+    .mcard h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; color: var(--mocha); line-height: 1.05; letter-spacing: -.01em; }
+    .mcard p { margin-top: 12px; font-size: 1rem; line-height: 1.6; color: #7a5a4a; max-width: 46ch; }
+
+    /* Couleurs des cartes (cycle rose → beige → marron) */
+    .mcard.tone-rose  { background: linear-gradient(160deg, #fbeef0, #f4ecec); border-color: var(--rose-mid); }
+    .mcard.tone-beige { background: var(--cream); border-color: var(--rose-mid); }
+    .mcard.tone-brown { background: linear-gradient(160deg, #3a2318, var(--mocha)); border-color: rgba(201,169,110,.3); }
+    .mcard.tone-brown h3 { color: var(--cream); }
+    .mcard.tone-brown p { color: rgba(250,247,242,.72); }
+    .mcard.tone-brown .mcard-badge { background: rgba(250,247,242,.1); }
+    .mcard.tone-brown .mcard-badge b { color: var(--cream); }
+
+    .arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rose-mid);
+      background: #fff; color: var(--mocha); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+      box-shadow: 0 6px 20px rgba(44,24,16,.12); transition: transform .2s, box-shadow .2s, opacity .2s;
+    }
+    .arrow:hover { transform: translateY(-50%) scale(1.08); box-shadow: 0 10px 26px rgba(192,120,120,.28); }
+    .arrow.prev { left: -6px; } .arrow.next { right: -6px; }
+    .arrow:disabled { opacity: .32; cursor: default; box-shadow: none; }
+    .dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+    .dots button { width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: var(--rose-mid); transition: all .25s; }
+    .dots button.active { width: 26px; border-radius: 10px; background: var(--terracotta); }
+    .swipe-hint { text-align: center; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #c0a0a0; margin-top: 12px; }
+
+    /* ── SECTION 2 : OFFRES (choisis ta formule) ── */
+    .s2 { background: var(--rose-light); padding: 76px 24px 84px; border-top: 1px solid var(--rose-mid); }
+    .s2-header { text-align: center; margin-bottom: 44px; }
+    .s2-tag { font-size: .6rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--terracotta); display: block; margin-bottom: 12px; }
+    .s2-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 900; color: var(--mocha); margin-bottom: 10px; }
+    .s2-title em { font-style: italic; color: var(--terracotta); }
+    .s2-sub { font-size: .9rem; color: #9a7a6a; max-width: 52ch; margin: 0 auto; }
+
+    .offers { max-width: 900px; margin: 0 auto; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+    .card {
+      background: #fff; border-radius: 22px; padding: 40px 32px 32px;
+      position: relative; border: 1.5px solid var(--rose-mid);
+      display: flex; flex-direction: column;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(192,120,120,.15); border-color: var(--terracotta); }
+    .card-popular { border-color: var(--terracotta); box-shadow: 0 4px 24px rgba(192,120,120,.14); }
+    .badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--terracotta); color: #fff;
+      font-size: .6rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 18px; border-radius: 20px; white-space: nowrap;
+    }
+    .card-type { font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 6px; }
+    .card-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800; color: var(--mocha); margin-bottom: 16px; }
+    .price-old { font-size: .9rem; color: #c0a0a0; text-decoration: line-through; margin-bottom: 2px; }
+    .price-new { font-family: 'Playfair Display', serif; font-size: 2.7rem; font-weight: 900; color: var(--mocha); line-height: 1; margin-bottom: 4px; }
+    .price-new sup { font-size: 1.05rem; vertical-align: super; }
+    .price-note { font-size: .73rem; color: #9a7a6a; margin-bottom: 8px; }
+    .savings { display: inline-block; background: rgba(46,125,50,.08); color: #2e7d32; font-size: .65rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 18px; }
+    .divider { height: 1px; background: var(--rose-mid); margin-bottom: 16px; }
+    .feat-label { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #b09a9a; margin-bottom: 12px; }
+    .features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; flex: 1; }
+    .features li { font-size: .82rem; color: #5a3a2a; display: flex; align-items: flex-start; gap: 9px; line-height: 1.5; }
+    .features li::before { content: '✓'; color: var(--terracotta); font-weight: 700; flex-shrink: 0; }
+    .features li.star::before { content: '✦'; color: var(--gold); }
+    .btn-pay {
+      display: block; text-align: center; padding: 16px 24px; border-radius: 50px;
+      font-family: 'Inter', sans-serif; font-size: .86rem; font-weight: 700;
+      text-decoration: none; letter-spacing: .02em; transition: transform .2s, box-shadow .2s;
+    }
+    .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,120,120,.35); }
+    .btn-primary-pay { background: var(--terracotta); color: #fff; }
+    .btn-secondary-pay { background: var(--mocha); color: var(--cream); }
+    .pay-alt { text-align: center; margin-top: 14px; font-size: .78rem; color: #9a7a6a; }
+    .pay-alt a { color: var(--terracotta); font-weight: 600; border-bottom: 1px solid rgba(192,120,120,.4); text-decoration: none; }
+    .guarantee { max-width: 900px; margin: 30px auto 0; text-align: center; font-size: .74rem; color: #b09a9a; }
+
+    /* FOOTER */
+    footer { background: var(--mocha); padding: 32px 24px; text-align: center; }
+    .foot-logo-text { font-family: 'Playfair Display', serif; font-size: .95rem; font-weight: 700; color: var(--cream); letter-spacing: .08em; margin-bottom: 7px; }
+    .foot-logo-text span { color: var(--terracotta); }
+    .foot-sub { font-size: .7rem; color: var(--rose); opacity: .5; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .s1-header { padding: 48px 24px 8px; }
+      .cards { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width: 580px) {
+      .s1-title { font-size: 2.2rem; }
+      .slider { padding: 0 8px; }
+      .arrow.prev { left: 2px; } .arrow.next { right: 2px; } .arrow { width: 40px; height: 40px; }
+      .mcard { padding: 30px 24px 26px; min-height: 280px; }
+      .s2 { padding: 56px 16px 64px; }
+      .price-new { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://manonbian.fr" class="nav-logo">
+      <img src="./logo-propulse.png" alt="PROPULSE par Manon Bian">
+    </a>
+  </nav>
+
+  <!-- ============ SECTION 1 : HERO + MODULES ============ -->
+  <section class="s1">
+    <div class="s1-header">
+      <div class="tag-pill">✦ Rejoins PROPULSE</div>
+      <h1 class="s1-title">Apprends une compétence, gagne tes <span class="line-light">premiers revenus</span>.</h1>
+      <p class="s1-sub">La méthode complète pour te lancer en freelance : 10 modules et plus de 50 vidéos. UGC, social media, positionnement, prospection, création de ta boîte… tu avances étape par étape.</p>
+
+      <div class="s1-meta">
+        <div class="meta-chip"><b>10</b><span>modules</span></div>
+        <div class="meta-chip"><b>50+</b><span>vidéos</span></div>
+        <div class="meta-chip"><b>2</b><span>parcours</span></div>
+        <div class="meta-chip"><b>+</b><span>accès aux mises à jour</span></div>
+      </div>
+    </div>
+
+    <div class="slider">
+      <button class="arrow prev" id="prev" aria-label="Module précédent">‹</button>
+      <div class="viewport" id="viewport"><!-- slides injectés par JS --></div>
+      <button class="arrow next" id="next" aria-label="Module suivant">›</button>
+      <div class="dots" id="dots"></div>
+      <p class="swipe-hint">← Fais glisser →</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 : OFFRES ============ -->
+  <section class="s2" id="offres">
+    <div class="s2-header">
+      <span class="s2-tag">Offre de lancement</span>
+      <h2 class="s2-title">Choisis ta <em>formule</em>.</h2>
+      <p class="s2-sub">Deux façons d'avancer : en autonomie avec la formation, ou accompagnée pas à pas par Manon. Dans les deux cas, tu accèdes à tous les modules ci-dessus.</p>
+    </div>
+
+    <div class="offers">
+      <div class="cards">
+
+        <!-- FORMATION -->
+        <div class="card">
+          <p class="card-type">En autonomie</p>
+          <p class="card-name">La Formation PROPULSE</p>
+          <p class="price-old">597 €</p>
+          <p class="price-new"><sup>€</sup>497</p>
+          <p class="price-note">Règlement en une fois — accès à vie.</p>
+          <span class="savings">Tu économises 100€</span>
+          <div class="divider"></div>
+          <p class="feat-label">Ce que tu retrouves</p>
+          <ul class="features">
+            <li>Accès complet aux 10 modules &amp; 50+ vidéos</li>
+            <li>Les 2 parcours : UGC et Social Media</li>
+            <li>Prospection &amp; premiers clients, pas à pas</li>
+            <li>Lancer ta boîte (statut, URSSAF, facturation)</li>
+            <li>Outils, templates &amp; scripts prêts à l'emploi</li>
+            <li>Communauté privée PROPULSE + accès à vie</li>
+          </ul>
+          <a href="https://buy.stripe.com/3cI9AV3SQ4dgb3k6WJ7ok04" class="btn-pay btn-secondary-pay" target="_blank">
+            Accéder à la formation — 497€ →
+          </a>
+        </div>
+
+        <!-- ACCOMPAGNEMENT -->
+        <div class="card card-popular">
+          <div class="badge">✦ Le plus complet</div>
+          <p class="card-type">Formation + suivi 1:1</p>
+          <p class="card-name">L'Accompagnement PROPULSE</p>
+          <p class="price-old">1 200 €</p>
+          <p class="price-new"><sup>€</sup>897</p>
+          <p class="price-note">Règlement en une fois — accès à vie.</p>
+          <span class="savings">Tu économises 303€</span>
+          <div class="divider"></div>
+          <p class="feat-label">Toute la formation, et en plus</p>
+          <ul class="features">
+            <li class="star">Toute la formation (10 modules, 50+ vidéos)</li>
+            <li class="star">8 calls 1:1 avec Manon</li>
+            <li class="star">Stratégie sur-mesure adaptée à ton profil</li>
+            <li>Outils, templates &amp; scripts exclusifs</li>
+            <li>Communauté privée PROPULSE</li>
+            <li>Accès à vie + toutes les mises à jour</li>
+          </ul>
+          <a href="https://buy.stripe.com/6oU4gBcpmfVYdbsch37ok03" class="btn-pay btn-primary-pay" target="_blank">
+            Rejoindre l'accompagnement — 897€ →
+          </a>
+          <p class="pay-alt">
+            Envie de payer en 2 fois ?
+            <a href="https://wa.me/33676140933?text=Bonjour%20Manon%2C%20je%20souhaite%20rejoindre%20l'accompagnement%20PROPULSE%20en%20paiement%20en%202%20fois%20(2%C3%97%20497%E2%82%AC).">Écris-moi ici →</a>
+          </p>
+        </div>
+
+      </div>
+      <p class="guarantee">🔒 Paiement 100% sécurisé via Stripe &nbsp;·&nbsp; Carte bancaire &nbsp;·&nbsp; Apple Pay</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-logo-text"><span>PRO</span>PULSE</div>
+    <p class="foot-sub">par Manon Bian &nbsp;·&nbsp; manonbian.fr</p>
+  </footer>
+
+<script>
+  const modules = [
+    {b:"Module 0", i:"i1", e:"🚀", t:"Démarre ici", d:"Bienvenue, comment utiliser la formation et poser des bases solides pour bien commencer."},
+    {b:"Module 1", i:"i2", e:"🧠", t:"Le bon mindset", d:"L'état d'esprit qui fait la différence pour se lancer, oser et tenir dans la durée."},
+    {b:"Module 2", i:"i3", e:"🎯", t:"Ton positionnement", d:"Trouver ta niche, construire ton offre et te démarquer clairement sur ton marché."},
+    {b:"Module 3 · UGC", i:"i4", e:"🎬", t:"Deviens créatrice UGC", d:"De A à Z : matériel, tournage, montage et livrables pros pour vendre tes vidéos aux marques."},
+    {b:"Module 4 · SMM", i:"i5", e:"📱", t:"Social Media Manager", d:"Créer des Reels & TikTok qui performent pour tes clients — sans jamais montrer ton visage."},
+    {b:"Module 5", i:"i6", e:"✍️", t:"Crée du contenu pour toi", d:"Construire ton personal branding : poster du contenu qui t'attire des clients et installe ta crédibilité."},
+    {b:"Module 6", i:"i1", e:"🤝", t:"Trouve tes clients", d:"Prospection, cold DM, pitch, closing et négociation de tes tarifs pour décrocher tes premières missions payées."},
+    {b:"Module 7", i:"i2", e:"🏛️", t:"Lance ta boîte", d:"Auto-entrepreneur, URSSAF, factures : tout l'administratif français, sans prise de tête."},
+    {b:"Module 8", i:"i3", e:"🔥", t:"Mindset & Résilience", d:"Rester constante, gérer les doutes et durer dans le temps une fois lancée."},
+    {b:"Module 9", i:"i4", e:"✨", t:"La suite", d:"Passer au niveau supérieur et aller plus loin dans l'écosystème PROPULSE."}
+  ];
+
+  const viewport = document.getElementById('viewport');
+  const dotsWrap = document.getElementById('dots');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const tones = ['tone-rose', 'tone-beige', 'tone-brown'];
+
+  viewport.innerHTML = modules.map((m, i) => `
+    <div class="slide">
+      <article class="mcard ${tones[i % 3]}">
+        <div class="mcard-top">
+          <span class="mcard-badge"><span class="dot ${m.i}">${m.e}</span><b>${m.b}</b></span>
+          <span class="mcard-icon-lg ${m.i}">${m.e}</span>
+        </div>
+        <h3>${m.t}</h3>
+        <p>${m.d}</p>
+      </article>
+    </div>`).join('');
+
+  dotsWrap.innerHTML = modules.map((_, i) => `<button data-i="${i}" aria-label="Aller au module ${i+1}"></button>`).join('');
+  const dots = [...dotsWrap.children];
+
+  let index = 0;
+  function slideWidth() {
+    const s = viewport.querySelector('.slide');
+    return s.getBoundingClientRect().width + 20;
+  }
+  function goTo(i) {
+    index = Math.max(0, Math.min(modules.length - 1, i));
+    viewport.scrollTo({ left: index * slideWidth(), behavior: 'smooth' });
+    update();
+  }
+  function update() {
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === modules.length - 1;
+  }
+  prevBtn.addEventListener('click', () => goTo(index - 1));
+  nextBtn.addEventListener('click', () => goTo(index + 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
+  let t;
+  viewport.addEventListener('scroll', () => {
+    clearTimeout(t);
+    t = setTimeout(() => { index = Math.round(viewport.scrollLeft / slideWidth()); update(); }, 80);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') goTo(index - 1);
+    if (e.key === 'ArrowRight') goTo(index + 1);
+  });
+  update();
+</script>
+</body>
+</html>
