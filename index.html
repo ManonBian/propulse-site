@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROPULSE – Gagne ta vie avec les réseaux sociaux | Manon Bian</title>
+  <title>PROPULSE – Apprends une compétence et gagne tes premiers revenus | Manon Bian</title>
   <meta name="description" content="Découvre PROPULSE, la méthode de Manon Bian pour transformer ton téléphone en source de revenus. Crée du contenu, attire des marques et vis de ta passion.">
   <meta name="keywords" content="créatrice de contenu, UGC, réseaux sociaux, stratégie de contenu, gagner argent téléphone, coaching content creator, Manon Bian, PROPULSE, monétiser contenu, UGC France, social media manager, social media management">
   <meta name="author" content="Manon Bian">
@@ -13,7 +13,7 @@
   <!-- Open Graph (partage sur réseaux sociaux) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://manonbian.fr/">
-  <meta property="og:title" content="PROPULSE – Gagne ta vie avec les réseaux sociaux | Manon Bian">
+  <meta property="og:title" content="PROPULSE – Apprends une compétence et gagne tes premiers revenus | Manon Bian">
   <meta property="og:description" content="Découvre PROPULSE, la méthode de Manon Bian pour transformer ton téléphone en source de revenus. Crée du contenu, attire des marques et vis de ta passion.">
   <meta property="og:image" content="https://manonbian.fr/imagewebp/hero_photo.webp">
   <meta property="og:locale" content="fr_FR">
@@ -21,7 +21,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PROPULSE – Gagne ta vie avec les réseaux sociaux | Manon Bian">
+  <meta name="twitter:title" content="PROPULSE – Apprends une compétence et gagne tes premiers revenus | Manon Bian">
   <meta name="twitter:description" content="Découvre PROPULSE, la méthode de Manon Bian pour transformer ton téléphone en source de revenus. Crée du contenu, attire des marques et vis de ta passion.">
   <meta name="twitter:image" content="https://manonbian.fr/imagewebp/hero_photo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -247,6 +247,21 @@
       font-size:1.12em;
       -webkit-text-stroke:0;
     }
+    .hero-promo-wrap { text-align:center; margin-bottom:18px; }
+    .hero-promo {
+      display:inline-flex; align-items:center; gap:9px;
+      font-size:.95rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+      color:#fff; background:var(--terracotta); padding:12px 24px; border-radius:30px;
+      text-decoration:none; box-shadow:0 10px 30px rgba(192,120,120,.40);
+      animation:promoPulse 2.2s ease-in-out infinite; transform-origin:center;
+    }
+    .hero-promo:hover { animation-play-state:paused; }
+    @keyframes promoPulse {
+      0%,100% { transform:scale(1);    box-shadow:0 10px 30px rgba(192,120,120,.40); }
+      50%     { transform:scale(1.06); box-shadow:0 16px 42px rgba(192,120,120,.55); }
+    }
+    .hero-photos-wrap .hero-promo-wrap { position:absolute; top:16px; right:12px; z-index:5; margin:0; }
+    .hero-photos-wrap .hero-promo { font-size:1.05rem; padding:14px 26px; letter-spacing:.06em; }
 
     .hero-sub {
       font-size:1.05rem;
@@ -2324,6 +2339,7 @@
   <!-- HERO MOBILE UNIQUEMENT -->
   <div class="hero-mobile" style="display:none;">
     <h1 class="mob-title">Apprends une compétence,<br>crée ton business et<br>génère tes <em>premiers revenus !</em></h1>
+    <div class="hero-promo-wrap" style="margin-top:14px;"><a href="#offres" class="hero-promo">🍂 Offre de rentrée</a></div>
     <div class="mob-photo-wrap">
       <img class="mob-photo" src="image/propulse_stripe.png" alt="Manon Bian – PROPULSE">
     </div>
@@ -2362,6 +2378,7 @@
         <!-- Photos droite -->
         <div class="hero-photos-col">
           <div class="hero-photos-wrap">
+            <div class="hero-promo-wrap"><a href="#offres" class="hero-promo">🍂 Offre de rentrée</a></div>
 
             <!-- badges flottants -->
             <div class="hp-badge hp-b1">
@@ -2795,10 +2812,12 @@
     .offer-badge.soft { background:var(--gold); }
     .offer-name { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--mocha); }
     .offer-tagline { font-size:.92rem; color:rgba(44,24,16,.6); margin-top:8px; line-height:1.55; min-height:58px; }
-    .offer-mid { margin:20px 0; min-height:82px; display:flex; flex-direction:column; justify-content:center; }
+    .offer-mid { margin:20px 0; min-height:100px; display:flex; flex-direction:column; justify-content:center; }
     .offer-mid .offer-price-row { margin:0 0 8px; }
     .offer-mid .offer-pay-note { margin:0; }
     .offer-mid .offer-limited { margin:0; align-self:flex-start; }
+    .offer-discount { align-self:center; background:var(--terracotta); color:#fff; font-size:.72rem; font-weight:800; letter-spacing:.02em; padding:4px 9px; border-radius:9px; }
+    .offer-urgent { margin-top:8px; font-size:.8rem; font-weight:700; color:var(--terracotta); }
     .offer-price-row { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin:22px 0 4px; }
     .offer-price-label { flex-shrink:0; font-size:.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; background:var(--gold); padding:5px 11px; border-radius:20px; margin-top:6px; }
     .offer-price { margin:0; display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 12px; }
@@ -2850,11 +2869,12 @@
             <div class="offer-price-row">
               <div class="offer-price">
                 <span class="old">597€</span>
-                <span class="new">497<span class="cur">€</span></span>
+                <span class="new">297<span class="cur">€</span></span>
+                <span class="offer-discount">-50%</span>
               </div>
               <span class="offer-price-label">Offre de rentrée</span>
             </div>
-            <p class="offer-pay-note">💳 Paiement en 2× disponible.</p>
+            <p class="offer-urgent">🔥 Places ultra limitées</p>
           </div>
           <div class="offer-divider"></div>
           <ul class="offer-features">
@@ -2865,9 +2885,8 @@
             <li>Ressources, modèles &amp; scripts prêts à l'emploi</li>
             <li>Accès à vie à la communauté privée</li>
           </ul>
-          <a href="https://buy.stripe.com/3cI9AV3SQ4dgb3k6WJ7ok04" target="_blank" class="offer-cta gold">Accéder à l'académie PROPULSE →</a>
+          <a href="https://buy.stripe.com/aFa28texu6lo6N41Cp7ok07" target="_blank" class="offer-cta gold">Accéder à l'académie PROPULSE →</a>
           <div class="offer-foot">
-            <a href="https://buy.stripe.com/aFa14pexu39cgnEftf7ok06" target="_blank" class="offer-2x-link">Paiement en 2× ?</a>
             <p class="offer-secure">🔒 Paiement sécurisé via Stripe</p>
           </div>
         </div>
