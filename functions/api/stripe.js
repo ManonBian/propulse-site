@@ -1,6 +1,6 @@
 // POST /api/stripe — webhook Stripe (signature vérifiée).
 // Événements à abonner : checkout.session.completed, checkout.session.async_payment_succeeded,
-// checkout.session.expired, charge.refunded.
+// checkout.session.expired, charge.refunded, invoice.paid.
 // client_reference_id = identifiant visiteur ajouté par site.js sur les liens buy.stripe.com.
 
 import { parisDay, hmacBytes, toHex, safeEqual, json } from '../../lib/util.js';
@@ -51,6 +51,15 @@ export async function onRequestPost({ request, env }) {
       status, obj.amount_total ?? null, obj.currency ?? null, email, vid,
       typeof obj.payment_link === 'string' ? obj.payment_link : null,
     ).run();
+  } else if (evt.type === 'invoice.paid') {
+    // Mensualités suivantes des paiements en plusieurs fois (la 1re arrive via checkout.session.completed).
+    if (obj.billing_reason !== 'subscription_cycle' || !obj.amount_paid) return json({ ok: true, skipped: obj.billing_reason });
+    const email = (obj.customer_email || '').toLowerCase() || null;
+    await env.DB.prepare(
+      `INSERT OR IGNORE INTO orders (ts, day, session_id, payment_intent, status, amount, currency, email, vid, payment_link)
+       VALUES (?, ?, ?, ?, 'paid', ?, ?, ?, NULL, NULL)`,
+    ).bind(now, parisDay(now), obj.id, typeof obj.payment_intent === 'string' ? obj.payment_intent : null,
+      obj.amount_paid, obj.currency ?? null, email).run();
   } else if (evt.type === 'charge.refunded') {
     if (typeof obj.payment_intent === 'string') {
       await env.DB.prepare(
