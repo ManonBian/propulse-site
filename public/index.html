@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://manonbian.fr/">
   <meta property="og:title" content="PROPULSE – Apprends une compétence et gagne tes premiers revenus | Manon Bian">
   <meta property="og:description" content="Découvre PROPULSE, la méthode de Manon Bian pour transformer ton téléphone en source de revenus. Crée du contenu, attire des marques et vis de ta passion.">
-  <meta property="og:image" content="https://manonbian.fr/imagewebp/hero_photo.webp">
+  <meta property="og:image" content="https://manonbian.fr/image/og-propulse.jpg">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="PROPULSE par Manon Bian">
 
@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PROPULSE – Apprends une compétence et gagne tes premiers revenus | Manon Bian">
   <meta name="twitter:description" content="Découvre PROPULSE, la méthode de Manon Bian pour transformer ton téléphone en source de revenus. Crée du contenu, attire des marques et vis de ta passion.">
-  <meta name="twitter:image" content="https://manonbian.fr/imagewebp/hero_photo.webp">
+  <meta name="twitter:image" content="https://manonbian.fr/image/og-propulse.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
@@ -2320,28 +2320,29 @@
       }
     }
   </style>
+  <script src="/js/site.js" defer></script>
 </head>
 <body>
 
   <!-- ── NAVIGATION ── -->
-  <nav id="nav">
+  <nav id="nav" data-sec="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="#" class="logo-propulse" style="font-size:1.3rem;">
           <span class="lp-pro">PRO</span><span class="lp-pulse">PULSE</span>
         </a>
         <span class="nav-center-name">Manon <span style="color:var(--terracotta);">Bian</span></span>
-        <a href="https://tally.so/r/VLD9Oa" target="_blank" class="nav-cta"><span class="nav-cta-long">Rejoindre PROPULSE</span><span class="nav-cta-short">Rejoindre →</span></a>
+        <a href="https://tally.so/r/VLD9Oa" target="_blank" class="nav-cta" data-cta="Rejoindre (menu)"><span class="nav-cta-long">Rejoindre PROPULSE</span><span class="nav-cta-short">Rejoindre →</span></a>
       </div>
     </div>
   </nav>
 
   <!-- HERO MOBILE UNIQUEMENT -->
-  <div class="hero-mobile" style="display:none;">
+  <div class="hero-mobile" style="display:none;" data-sec="hero">
     <h1 class="mob-title">Apprends une compétence,<br>crée ton business et<br>génère tes <em>premiers revenus !</em></h1>
     <div class="hero-promo-wrap" style="margin-top:14px;"><a href="#offres" class="hero-promo">🍂 Offre de rentrée</a></div>
     <div class="mob-photo-wrap">
-      <img class="mob-photo" src="image/propulse_stripe.png" alt="Manon Bian – PROPULSE">
+      <img class="mob-photo" src="image/propulse_stripe.webp" fetchpriority="high" alt="Manon Bian – PROPULSE">
     </div>
     <div class="mob-quote-wrap">
       <p class="mob-tagline">Une compétence suffit pour commencer. PROPULSE t'apprend à la maîtriser, à la monétiser et à décrocher tes premiers clients.</p>
@@ -2350,7 +2351,7 @@
   </div>
 
   <!-- ── HERO ── -->
-  <section class="hero">
+  <section class="hero" data-sec="hero">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
@@ -2410,7 +2411,7 @@
   </section>
 
   <!-- ── VIDEO ── -->
-  <section class="video-section">
+  <section class="video-section" data-sec="video">
     <div class="container">
       <div class="video-inner reveal">
         <div class="video-eyebrow">Vidéo offerte</div>
@@ -2418,7 +2419,7 @@
         <span class="byline on-dark" style="margin-bottom:.8rem;">par <strong>Manon Bian</strong></span>
         <div class="video-frame">
           <div class="yt-facade" data-id="vCLaJhoPmNM" style="padding:56.25% 0 0 0; position:relative; border-radius:18px; overflow:hidden; cursor:pointer; background:#000;">
-            <img src="https://img.youtube.com/vi/vCLaJhoPmNM/maxresdefault.jpg"
+            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/vCLaJhoPmNM/maxresdefault.jpg"
                  onerror="this.onerror=null;this.src='https://img.youtube.com/vi/vCLaJhoPmNM/hqdefault.jpg';"
                  alt="Vidéo PROPULSE"
                  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
@@ -2432,13 +2433,14 @@
           document.querySelectorAll('.yt-facade').forEach(function(f){
             f.addEventListener('click', function(){
               var id = f.getAttribute('data-id');
-              f.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vidéo PROPULSE"></iframe>';
+              f.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin) + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vidéo PROPULSE"></iframe>';
+              if (window.PT && window.PT.watchYouTube) window.PT.watchYouTube(f.querySelector('iframe'), id);
             });
             f.addEventListener('mouseenter', function(){ var p=f.querySelector('.yt-play'); if(p) p.style.transform='translate(-50%,-50%) scale(1.08)'; });
             f.addEventListener('mouseleave', function(){ var p=f.querySelector('.yt-play'); if(p) p.style.transform='translate(-50%,-50%) scale(1)'; });
           });
         </script>
-        <a href="https://tally.so/r/VLD9Oa" target="_blank" class="video-book-btn">
+        <a href="https://tally.so/r/VLD9Oa" target="_blank" class="video-book-btn" data-cta="Formulaire éligibilité (sous la vidéo)">
           <span class="video-book-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="3"/>
@@ -2483,7 +2485,7 @@
       .recognize-section { padding:48px 0; }
     }
   </style>
-  <section class="recognize-section">
+  <section class="recognize-section" data-sec="probleme">
     <div class="container">
       <div class="sec-head reveal">
         <span class="tag">Tu te reconnais&nbsp;?</span>
@@ -2603,7 +2605,7 @@
       .stat-lbl { font-size:.74rem; }
     }
   </style>
-  <section class="academy-section">
+  <section class="academy-section" data-sec="academie">
     <div class="container">
       <div class="academy-inner academy-text reveal">
         <span class="tag">L'Académie PROPULSE 🚀</span>
@@ -2614,7 +2616,7 @@
   </section>
 
   <!-- ── ORDINATEUR (SHOWCASE) ── -->
-  <section class="mac-showcase">
+  <section class="mac-showcase" data-sec="academie_demo">
     <div class="container">
       <div class="academy-visual reveal">
         <div style="text-align:center; margin-bottom:26px;">
@@ -2624,7 +2626,7 @@
         <div class="mac-wrap">
           <div class="mac-screen">
             <div class="mac-screen-inner">
-              <video class="mac-video" autoplay muted loop playsinline preload="metadata">
+              <video class="mac-video" data-lazy-play muted loop playsinline preload="none">
                 <source src="imagewebp/interface-skool-web.mp4" type="video/mp4">
               </video>
             </div>
@@ -2672,13 +2674,13 @@
   </script>
 
   <!-- ── ABOUT ── -->
-  <section class="about-section" id="about">
+  <section class="about-section" id="about" data-sec="about">
     <div class="container">
       <div class="about-grid">
         <div class="about-img-col reveal">
           <div class="about-img-wrap">
             <div class="about-img-frame">
-              <img src="imagewebp/DSC_0675.webp" alt="Manon Bian" style="width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center center; border-radius:20px; display:block;">
+              <img loading="lazy" decoding="async" src="imagewebp/DSC_0675.webp" alt="Manon Bian" style="width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center center; border-radius:20px; display:block;">
               <div class="about-quote-badge">"Aujourd'hui je te donne tout ce que j'ai appris. Grâce à PROPULSE, trouve ta méthode, applique-la et vis enfin de ta passion."</div>
             </div>
             <span class="byline about-byline"><strong>Manon Bian</strong>, Créatrice de PROPULSE</span>
@@ -2694,7 +2696,7 @@
   </section>
 
   <!-- ── SHOWCASE ── -->
-  <section class="showcase-section">
+  <section class="showcase-section" data-sec="realisations">
     <div class="container">
       <div class="sec-head reveal">
         <span class="tag">La preuve par l'exemple</span>
@@ -2714,53 +2716,53 @@
 
             <!-- set 1 -->
             <div class="sc-reel-card">
-              <video src="video/opodo.mp4" poster="video/opodo-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/opodo.mp4" poster="video/opodo-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Opodo</span><span class="sc-reel-type">Voyage</span></div>
             </div>
             <div class="sc-reel-card">
-              <video src="video/qwetch.mp4" poster="video/qwetch-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/qwetch.mp4" poster="video/qwetch-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Qwetch</span><span class="sc-reel-type">Lifestyle</span></div>
             </div>
             <div class="sc-reel-card">
-              <video src="video/toyota.mp4" poster="video/toyota-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/toyota.mp4" poster="video/toyota-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Toyota</span><span class="sc-reel-type">Automobile</span></div>
             </div>
             <div class="sc-reel-card">
-              <video src="video/contrat-chapka.mp4" poster="video/contrat-chapka-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/contrat-chapka.mp4" poster="video/contrat-chapka-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Chapka</span><span class="sc-reel-type">Assurance voyage</span></div>
             </div>
             <div class="sc-reel-card">
-              <video src="video/tu-veux-un-diplome-PGE.mp4" poster="video/tu-veux-un-diplome-PGE-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/tu-veux-un-diplome-PGE.mp4" poster="video/tu-veux-un-diplome-PGE-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">INSEEC PGE</span><span class="sc-reel-type">Formation</span></div>
             </div>
             <div class="sc-reel-card">
-              <video src="video/acqua-e-farina.mp4" poster="video/acqua-e-farina-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/acqua-e-farina.mp4" poster="video/acqua-e-farina-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Boulangerie</span><span class="sc-reel-type">Boulangerie</span></div>
             </div>
 
             <!-- set 2 — duplicate pour boucle seamless -->
             <div class="sc-reel-card" aria-hidden="true">
-              <video src="video/opodo.mp4" poster="video/opodo-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/opodo.mp4" poster="video/opodo-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Opodo</span><span class="sc-reel-type">Voyage</span></div>
             </div>
             <div class="sc-reel-card" aria-hidden="true">
-              <video src="video/qwetch.mp4" poster="video/qwetch-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/qwetch.mp4" poster="video/qwetch-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Qwetch</span><span class="sc-reel-type">Lifestyle</span></div>
             </div>
             <div class="sc-reel-card" aria-hidden="true">
-              <video src="video/toyota.mp4" poster="video/toyota-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/toyota.mp4" poster="video/toyota-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Toyota</span><span class="sc-reel-type">Automobile</span></div>
             </div>
             <div class="sc-reel-card" aria-hidden="true">
-              <video src="video/contrat-chapka.mp4" poster="video/contrat-chapka-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/contrat-chapka.mp4" poster="video/contrat-chapka-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Chapka</span><span class="sc-reel-type">Assurance voyage</span></div>
             </div>
             <div class="sc-reel-card" aria-hidden="true">
-              <video src="video/tu-veux-un-diplome-PGE.mp4" poster="video/tu-veux-un-diplome-PGE-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/tu-veux-un-diplome-PGE.mp4" poster="video/tu-veux-un-diplome-PGE-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">INSEEC PGE</span><span class="sc-reel-type">Formation</span></div>
             </div>
             <div class="sc-reel-card" aria-hidden="true">
-              <video src="video/acqua-e-farina.mp4" poster="video/acqua-e-farina-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+              <video src="video/acqua-e-farina.mp4" poster="video/acqua-e-farina-poster.jpg" data-lazy-play muted loop playsinline preload="none"></video>
               <div class="sc-reel-info"><span class="sc-reel-client">Boulangerie</span><span class="sc-reel-type">Boulangerie</span></div>
             </div>
 
@@ -2773,23 +2775,23 @@
   </section>
 
   <!-- ── VIREMENTS ── -->
-  <section class="virements-section">
+  <section class="virements-section" data-sec="virements">
     <div class="virements-inner">
       <p class="virements-label">Des résultats concrets, pas des promesses.</p>
       <div class="virements-ticker-wrap">
         <div class="virements-ticker">
           <!-- set 1 -->
-          <div class="vir-card"><img src="imagewebp/vir_5.webp" alt="Virement +250€"></div>
-          <div class="vir-card"><img src="imagewebp/vir_4.webp" alt="Virement +516€"></div>
-          <div class="vir-card"><img src="imagewebp/vir_3.webp" alt="Virement +950€"></div>
-          <div class="vir-card"><img src="imagewebp/vir_1.webp" alt="Virement +1015€"></div>
-          <div class="vir-card"><img src="imagewebp/vir_2.webp" alt="Virement reçu"></div>
+          <div class="vir-card"><img loading="lazy" decoding="async" src="imagewebp/vir_5.webp" alt="Virement +250€"></div>
+          <div class="vir-card"><img loading="lazy" decoding="async" src="imagewebp/vir_4.webp" alt="Virement +516€"></div>
+          <div class="vir-card"><img loading="lazy" decoding="async" src="imagewebp/vir_3.webp" alt="Virement +950€"></div>
+          <div class="vir-card"><img loading="lazy" decoding="async" src="imagewebp/vir_1.webp" alt="Virement +1015€"></div>
+          <div class="vir-card"><img loading="lazy" decoding="async" src="imagewebp/vir_2.webp" alt="Virement reçu"></div>
           <!-- set 2 (duplicate pour boucle seamless) -->
-          <div class="vir-card" aria-hidden="true"><img src="imagewebp/vir_5.webp" alt=""></div>
-          <div class="vir-card" aria-hidden="true"><img src="imagewebp/vir_4.webp" alt=""></div>
-          <div class="vir-card" aria-hidden="true"><img src="imagewebp/vir_3.webp" alt=""></div>
-          <div class="vir-card" aria-hidden="true"><img src="imagewebp/vir_1.webp" alt=""></div>
-          <div class="vir-card" aria-hidden="true"><img src="imagewebp/vir_2.webp" alt=""></div>
+          <div class="vir-card" aria-hidden="true"><img loading="lazy" decoding="async" src="imagewebp/vir_5.webp" alt=""></div>
+          <div class="vir-card" aria-hidden="true"><img loading="lazy" decoding="async" src="imagewebp/vir_4.webp" alt=""></div>
+          <div class="vir-card" aria-hidden="true"><img loading="lazy" decoding="async" src="imagewebp/vir_3.webp" alt=""></div>
+          <div class="vir-card" aria-hidden="true"><img loading="lazy" decoding="async" src="imagewebp/vir_1.webp" alt=""></div>
+          <div class="vir-card" aria-hidden="true"><img loading="lazy" decoding="async" src="imagewebp/vir_2.webp" alt=""></div>
         </div>
       </div>
     </div>
@@ -2855,7 +2857,7 @@
       .offer-price .new { font-size:2.4rem; }
     }
   </style>
-  <section class="offers-section" id="offres">
+  <section class="offers-section" id="offres" data-sec="offres">
     <div class="container">
       <div class="offers-head reveal">
         <span class="tag">Rejoindre PROPULSE</span>
@@ -2888,7 +2890,7 @@
             <li>Ressources, modèles &amp; scripts prêts à l'emploi</li>
             <li>Accès à vie à la communauté privée</li>
           </ul>
-          <a href="https://buy.stripe.com/5kQ28t896bFI4EWgxj7ok08" target="_blank" class="offer-cta gold">Accéder à l'académie PROPULSE →</a>
+          <a href="https://buy.stripe.com/5kQ28t896bFI4EWgxj7ok08" target="_blank" class="offer-cta gold" data-cta="Académie (carte offre)">Accéder à l'académie PROPULSE →</a>
           <div class="offer-foot">
             <p class="offer-secure">🔒 Paiement sécurisé via Stripe</p>
           </div>
@@ -2912,7 +2914,7 @@
             <li>Ressources exclusives supplémentaires</li>
             <li>Une communauté de filles motivées 💪</li>
           </ul>
-          <a href="https://tally.so/r/VLD9Oa" target="_blank" class="offer-cta primary">Remplir le formulaire pour rejoindre →</a>
+          <a href="https://tally.so/r/VLD9Oa" target="_blank" class="offer-cta primary" data-cta="Accompagnement (carte offre)">Remplir le formulaire pour rejoindre →</a>
           <div class="offer-foot">
             <p class="offer-secure">Réponse rapide — places attribuées selon les dossiers</p>
           </div>
@@ -2923,7 +2925,7 @@
   </section>
 
   <!-- ── TESTIMONIALS ── -->
-  <section class="testimonials-section">
+  <section class="testimonials-section" data-sec="temoignages">
     <div class="container">
       <div class="sec-head reveal">
         <span class="tag">Témoignages</span>
@@ -2969,7 +2971,7 @@
   </section>
 
   <!-- ── FAQ ── -->
-  <section class="faq-section">
+  <section class="faq-section" data-sec="faq">
     <div class="container">
       <div class="sec-head reveal">
         <span class="tag">FAQ</span>
@@ -3022,7 +3024,7 @@
   </section>
 
   <!-- ── FOOTER ── -->
-  <footer>
+  <footer data-sec="footer">
     <div class="container">
       <div class="foot-in">
         <div style="display:flex; flex-direction:column; align-items:center; gap:.4rem;">
@@ -3118,7 +3120,7 @@
     }
 
     // open phase 1 by default on load
-    window.addEventListener('DOMContentLoaded', () => tog('ph1'));
+    window.addEventListener('DOMContentLoaded', () => { if (document.getElementById('ph1')) tog('ph1'); });
 
     // ── Parallaxe + glissement tactile photo "Tu te reconnais" ──
     (function() {
@@ -3162,21 +3164,33 @@
       }, { passive: true });
     })();
 
-    // ── Reel videos : lecture automatique ──
-    const reelVideos = document.querySelectorAll('.sc-reel-card video');
-    function playAllReelVideos() {
-      reelVideos.forEach(v => { v.muted = true; v.play().catch(() => {}); });
-    }
-    playAllReelVideos();
-    // iOS : démarre au premier toucher utilisateur
-    document.addEventListener('touchstart', playAllReelVideos, { once: true });
-    document.addEventListener('click', playAllReelVideos, { once: true });
+    // ── Vidéos : lecture uniquement quand elles sont à l'écran ──
+    // (autoplay HTML = tout téléchargé au chargement, ~70 Mo sur mobile)
+    (function() {
+      const vids = document.querySelectorAll('video[data-lazy-play]');
+      const play = v => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); };
+      if (!('IntersectionObserver' in window)) { vids.forEach(v => { v.preload = 'auto'; play(v); }); return; }
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          const v = e.target;
+          if (e.isIntersecting) { if (v.preload !== 'auto') v.preload = 'auto'; play(v); }
+          else if (!v.paused) v.pause();
+        });
+      }, { rootMargin: '200px 0px' });
+      vids.forEach(v => io.observe(v));
+      // iOS basse consommation : relance au premier toucher
+      document.addEventListener('touchstart', () => vids.forEach(v => {
+        const r = v.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < innerHeight) play(v);
+      }), { once: true, passive: true });
+    })();
 
     // ── Hero iPhone slider ──
     let heroIdx = 0;
     const heroTotal = 4;
     function heroGo(n) {
       heroIdx = n;
+      if (!document.getElementById('heroTrack')) return;
       document.getElementById('heroTrack').style.transform = `translateX(-${heroIdx * 100}%)`;
       document.querySelectorAll('#heroDots .iph-dot').forEach((d, i) => d.classList.toggle('on', i === heroIdx));
     }
@@ -3223,7 +3237,7 @@
   </script>
 
   <!-- SECTION PAIEMENT CACHÉE — visible uniquement avec ?rejoindre=propulse -->
-  <section id="payment-section" style="display:none; background:#FAF7F2; padding:80px 20px;">
+  <section id="payment-section" data-sec="paiement_cache" style="display:none; background:#FAF7F2; padding:80px 20px;">
     <style>
       .pay-wrap { max-width:820px; margin:0 auto; text-align:center; }
       .pay-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,5vw,2.6rem); font-weight:800; color:#2C1810; margin-bottom:12px; }
