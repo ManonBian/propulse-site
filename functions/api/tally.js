@@ -25,8 +25,10 @@ export async function onRequestPost({ request, env }) {
   const hidden = (label) => pick(fields, (f) => f.type === 'HIDDEN_FIELDS' && f.label === label);
 
   const email = pick(fields, (f) => f.type === 'INPUT_EMAIL');
-  const phone = pick(fields, (f) => f.type === 'INPUT_PHONE_NUMBER');
-  const name = pick(fields, (f) => f.type === 'INPUT_TEXT' && /pr[ée]nom|nom|name/i.test(f.label || ''));
+  // Le formulaire demande le WhatsApp dans un champ texte libre.
+  const phone = pick(fields, (f) => f.type === 'INPUT_PHONE_NUMBER')
+    || pick(fields, (f) => f.type === 'INPUT_TEXT' && /whats|t[ée]l[ée]phone|num[ée]ro/i.test(f.label || ''));
+  const name = pick(fields, (f) => f.type === 'INPUT_TEXT' && /pr[ée]nom|\bnom\b|name/i.test(f.label || ''));
   const vid = hidden('vid');
   const ts = Date.parse(data.createdAt || evt.createdAt) || Date.now();
 
