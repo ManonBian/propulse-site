@@ -6,7 +6,7 @@ compatibility_date = "2026-09-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "propulse-analytics"
-database_id = "00000000-0000-0000-0000-000000000000" # remplacé après `wrangler d1 create`
+database_id = "87080588-a88b-4444-a91d-15061e652a48"
 migrations_dir = "migrations"
 
 # Secrets (wrangler pages secret put …) : ADMIN_PASSWORD, STRIPE_WEBHOOK_SECRET, TALLY_SIGNING_SECRET
