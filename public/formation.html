@@ -204,19 +204,9 @@
       </div>
     </div>
 
-    <div class="slider">
-      <button class="arrow prev" id="prev" aria-label="Module précédent">‹</button>
-      <div class="viewport" id="viewport"><!-- slides injectés par JS --></div>
-      <button class="arrow next" id="next" aria-label="Module suivant">›</button>
-      <div class="dots" id="dots"></div>
-      <p class="swipe-hint">← Fais glisser →</p>
-    </div>
-  </section>
-
-
   <!-- ============ PLATEFORME / ORDINATEUR ============ -->
   <style>
-    .mac-showcase { background: var(--cream); padding: 8px 0 76px; overflow: hidden; }
+    .mac-showcase { background: var(--cream); padding: 30px 0 0; overflow: hidden; }
     .mshow-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
     .academy-visual { position: relative; display: flex; flex-direction: column; align-items: center; }
     .academy-visual-title { text-align: center; margin-bottom: 20px; font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.3rem, 2.4vw, 1.7rem); color: var(--mocha); letter-spacing: -.01em; }
@@ -232,7 +222,7 @@
     .stat-ic { width: 48px; height: 48px; border-radius: 15px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.35rem; background: #fff; border: 1px solid rgba(192,120,120,.20); box-shadow: 0 4px 24px rgba(192,120,120,.12); }
     .stat-lbl { font-size: .8rem; font-weight: 600; color: var(--mocha); text-align: center; line-height: 1.25; }
     @media (max-width: 580px) {
-      .mac-showcase { padding: 44px 0 60px; }
+      .mac-showcase { padding: 22px 0 0; }
       .imac-stats { gap: 14px 14px; }
       .stat-item { width: 76px; }
       .stat-ic { width: 44px; height: 44px; font-size: 1.2rem; }
@@ -264,6 +254,16 @@
       </div>
     </div>
   </section>
+
+    <div class="slider">
+      <button class="arrow prev" id="prev" aria-label="Module précédent">‹</button>
+      <div class="viewport" id="viewport"><!-- slides injectés par JS --></div>
+      <button class="arrow next" id="next" aria-label="Module suivant">›</button>
+      <div class="dots" id="dots"></div>
+      <p class="swipe-hint">← Fais glisser →</p>
+    </div>
+  </section>
+
 
   <!-- ============ SECTION 2 : L'OFFRE ============ -->
   <section class="s2" id="offres">
